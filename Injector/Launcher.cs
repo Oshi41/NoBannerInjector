@@ -11,7 +11,7 @@ using Newtonsoft.Json;
 using Newtonsoft.Json.Linq;
 using System.Windows.Forms;
 
-namespace NoBannerInjector
+namespace Injector
 {
     internal class Launcher
     {
@@ -112,7 +112,7 @@ namespace NoBannerInjector
 #if DEBUG
             data = File.ReadAllText("conf.json");
 #else
-            var url = "https://github.com/Oshi41/NoBannerInjector/blob/master/NoBannerInjector/conf.json";
+            var url = "https://github.com/Oshi41/Injector/blob/master/Injector/conf.json";
             var request = WebRequest.Create(url);
             request.Method = "GET";
 
@@ -137,10 +137,10 @@ namespace NoBannerInjector
             while (true)
             {
                 Thread.Sleep(500);
-                var scan = _memory.AoBScan(pattern, true, true).Result?.Take(1).ToList();
-                if (!scan.Any())
+                var scan = _memory.AoBScan(pattern, true, true).Result?.FirstOrDefault();
+                if (scan != 0)
                     continue;
-                _memory.WriteMemory(scan[0].ToString("X"), "int", "0");
+                _memory.WriteMemory(scan.Value.ToString("X"), "int", "0");
                 Console.WriteLine("Banner removed");
                 return;
             }

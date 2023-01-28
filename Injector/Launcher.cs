@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.Diagnostics;
 using System.IO;
 using System.Linq;
@@ -6,25 +7,25 @@ using System.Net;
 using System.Reflection;
 using System.Security.Principal;
 using System.Threading;
+using System.Windows.Forms;
 using Memory;
 using Newtonsoft.Json;
 using Newtonsoft.Json.Linq;
-using System.Windows.Forms;
 
 namespace Injector
 {
-    internal class Launcher
+    public class Launcher
     {
-        private static Mem _memory;
-        private static Process _genshinProc;
-        private static Ini _legacyConf;
-        private static string _libPath;
         private static JObject _settings;
+        private static JObject _web;
+        private static Process _process;
+        private static Mem _memory = new Mem();
 
         [STAThread]
         public static void Main(string[] args)
         {
-            if (!IsAdministrator)
+            // Run as Administrator
+            if (!new WindowsPrincipal(WindowsIdentity.GetCurrent()).IsInRole(WindowsBuiltInRole.Administrator))
             {
                 Process.Start(new ProcessStartInfo
                 {
@@ -35,115 +36,187 @@ namespace Injector
                 return;
             }
 
-            _memory = new Mem();
-            InitLegacyConfig();
-            Inject(args);
-            LoadConfig();
-            RemoveBanner();
-        }
-
-        private static bool IsAdministrator =>
-            new WindowsPrincipal(WindowsIdentity.GetCurrent()).IsInRole(WindowsBuiltInRole.Administrator);
-
-        private static void InitLegacyConfig()
-        {
-            var file = "./cfg.ini";
-            if (!File.Exists(file))
+            // Loading web config from GitHub
+            try
             {
-                File.CreateText(file).Close();
+                string data;
+#if DEBUG
+                data = File.ReadAllText("web.json");
+#else
+                var url = "https://github.com/Oshi41/Injector/blob/master/Injector/conf.json";
+                var request = WebRequest.Create(url);
+                request.Method = "GET";
+
+                using (var webResponse = request.GetResponse())
+                {
+                    using (var webStream = webResponse.GetResponseStream())
+                    {
+                        using (var reader = new StreamReader(webStream))
+                        {
+                            data = reader.ReadToEnd();
+                        }
+                    }
+                }
+#endif
+                _web = JsonConvert.DeserializeObject<JObject>(data);
+            }
+            catch (Exception e)
+            {
+                Console.Error.WriteLine(e);
+                _web = new JObject();
             }
 
-            _legacyConf = new Ini(file);
-            var path = _legacyConf.GetValue("GenshinPath", "Inject");
-            if (!File.Exists(path))
+            // Load main config
+            try
+            {
+                _settings = JsonConvert.DeserializeObject<JObject>(File.ReadAllText("cfg.json"));
+            }
+            catch (Exception e)
+            {
+                Console.Error.WriteLine(e);
+                File.CreateText("cfg.json").Close();
+                _settings = new JObject();
+            }
+
+            // Open Genshin process
+            var genshPath = _settings.Value<string>("genshin_path");
+            if (!File.Exists(genshPath))
             {
                 var dialog = new OpenFileDialog
                 {
-                    Filter = "*.exe|executable",
+                    Filter = "executable|*.exe",
                 };
                 if (dialog.ShowDialog() == DialogResult.OK)
                 {
-                    _legacyConf.WriteValue("GenshinPath", "Inject", dialog.FileName);
-                    _legacyConf.Save();
+                    _settings["genshin_path"] = genshPath = dialog.FileName;
+                    File.WriteAllText("cfg.json", JsonConvert.SerializeObject(_settings, Formatting.Indented));
                 }
+                else
+                    return;
             }
 
-            path = _legacyConf.GetValue("InitializationDelayMS", "System");
-            if (!int.TryParse(path, out var number))
+            _process = Process.Start(new ProcessStartInfo
             {
-                _legacyConf.WriteValue("InitializationDelayMS", "System", "15000");
-                _legacyConf.Save();
-            }
+                WorkingDirectory = Path.GetDirectoryName(genshPath),
+                FileName = Path.Combine(genshPath),
+                Arguments = _settings.Value<string>("genshin_arguments"),
+            });
 
-            _legacyConf.Load();
-        }
-
-        private static void Inject(string[] args)
-        {
-            var file = _legacyConf.GetValue("GenshinPath", "Inject");
-            var info = new ProcessStartInfo
-            {
-                WorkingDirectory = Path.GetDirectoryName(file),
-                FileName = file,
-                Arguments = _legacyConf.GetValue("GenshinCommandLine", "Inject"),
-            };
-            _genshinProc = Process.Start(info);
             Console.WriteLine("Genshin starting...");
-            Thread.Sleep(1000);
-            if (!_memory.OpenProcess(_genshinProc.Id, out var reason))
+            if (!DisableProtection())
             {
-                throw new Exception("Error during connecting to Genshin process: " + reason);
-            }
-
-            var dll = args.ElementAtOrDefault(0) ?? "CLibrary.dll";
-            _libPath = Path.Combine(dll);
-            if (!_memory.InjectDll(_libPath))
-            {
-                throw new Exception("Can't inject DLL");
-            }
-
-            Thread.Sleep(2000);
-            Console.WriteLine("Injected");
-        }
-
-        private static void LoadConfig()
-        {
-            string data;
-#if DEBUG
-            data = File.ReadAllText("conf.json");
-#else
-            var url = "https://github.com/Oshi41/Injector/blob/master/Injector/conf.json";
-            var request = WebRequest.Create(url);
-            request.Method = "GET";
-
-            using (var webResponse = request.GetResponse())
-            {
-                using (var webStream = webResponse.GetResponseStream())
-                {
-                    using (var reader = new StreamReader(webStream))
-                    {
-                        data = reader.ReadToEnd();
-                    }
-                    
-                }
-            }
-#endif
-            _settings = JsonConvert.DeserializeObject<JObject>(data);
-        }
-
-        private static void RemoveBanner()
-        {
-            var pattern = _settings.Value<string>("pattern");
-            while (true)
-            {
-                Thread.Sleep(500);
-                var scan = _memory.AoBScan(pattern, true, true).Result?.FirstOrDefault();
-                if (scan != 0)
-                    continue;
-                _memory.WriteMemory(scan.Value.ToString("X"), "int", "0");
-                Console.WriteLine("Banner removed");
+                _process?.Kill();
                 return;
             }
+
+            Thread.Sleep(1000);
+
+            if (!InjectLibrary())
+            {
+                _process?.Kill();
+                return;
+            }
+
+            Console.WriteLine("Library was injected");
+            Console.ReadKey();
+            _process?.Kill();
+        }
+
+        private static bool DisableProtection()
+        {
+            var handleName = _web.Value<string>("name");
+            var handleExe = _settings.Value<string>("handle_path") ?? "libs/handle.exe";
+            if (!File.Exists(handleExe))
+            {
+                Console.WriteLine("Can't find handle.exe");
+                return false;
+            }
+
+            while (true)
+            {
+                var args = GetHandleArgs(handleExe, handleName);
+                if (!args.Any())
+                {
+                    var sec = 1;
+                    Console.WriteLine($"Can't find {handleName}, waiting {sec} sec");
+                    Thread.Sleep(1000 * sec);
+                }
+                else
+                {
+                    var errors = CloseHandles(handleExe, args)
+                        .Where(x => !x.EndsWith("Handle closed.\r\n")).ToList();
+                    if (errors.Any())
+                    {
+                        Console.WriteLine(string.Join(Environment.NewLine, errors));
+                    }
+                    else
+                    {
+                        Console.WriteLine($"{handleName} was closed, happy hacking!");
+                        return true;
+                    }
+                }
+            }
+        }
+
+        private static bool InjectLibrary()
+        {
+            var dllName = "CheatLib.dll";
+            var type = "CheatLib.Program";
+            var method = "Main";
+
+            if (!_memory.OpenProcess(_process.Id, out var reason))
+            {
+                Console.WriteLine(reason);
+                return false;
+            }
+
+            if (!_memory.InjectDll(dllName))
+            {
+                Console.WriteLine("Can't inject library");
+                return false;
+            }
+
+            return true;
+        }
+
+        private static List<string> GetHandleArgs(string handleExe, string handleName)
+        {
+            var proc = Process.Start(new ProcessStartInfo
+            {
+                FileName = handleExe,
+                Arguments = $"/accepteula -nobanner  -a -v {handleName}",
+                UseShellExecute = false,
+                RedirectStandardOutput = true,
+            });
+            var args = new List<string>();
+            proc.WaitForExit();
+            var readToEnd = proc.StandardOutput.ReadToEnd();
+            readToEnd.Split('\n')
+                .Select(x => x.Split(','))
+                .Where(x => x.Length == 5 && int.TryParse(x[1], out _)).ToList().ForEach(x =>
+                {
+                    args.Add($"-p {x[1]} -c {x[3]} -y");
+                });
+            return args;
+        }
+
+        private static List<string> CloseHandles(string handleExe, List<string> args)
+        {
+            var res = new List<string>();
+            foreach (var arguments in args)
+            {
+                var proc = Process.Start(new ProcessStartInfo
+                {
+                    FileName = handleExe,
+                    Arguments = arguments,
+                    UseShellExecute = false,
+                    RedirectStandardOutput = true,
+                });
+                proc.WaitForExit();
+                res.Add(proc.StandardOutput.ReadToEnd());
+            }
+
+            return res;
         }
     }
 }

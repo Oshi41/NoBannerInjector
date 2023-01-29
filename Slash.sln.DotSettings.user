@@ -1,0 +1,14 @@
+﻿<wpf:ResourceDictionary xml:space="preserve" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:s="clr-namespace:System;assembly=mscorlib" xmlns:ss="urn:shemas-jetbrains-com:settings-storage-xaml" xmlns:wpf="http://schemas.microsoft.com/winfx/2006/xaml/presentation">
+	<s:String x:Key="/Default/Environment/AssemblyExplorer/XmlDocument/@EntryValue">&lt;AssemblyExplorer&gt;&#xD;
+  &lt;Assembly Path="C:\Users\oshi_\RiderProjects\NoBannerInjector\packages\Newtonsoft.Json.13.0.2\lib\net45\Newtonsoft.Json.dll" /&gt;&#xD;
+  &lt;Assembly Path="C:\Users\oshi_\RiderProjects\NoBannerInjector\packages\NtApiDotNet.1.1.33\lib\net461\NtApiDotNet.dll" /&gt;&#xD;
+  &lt;Assembly Path="C:\Users\oshi_\RiderProjects\NoBannerInjector\bin\x64\Debug\CheatLib.dll" /&gt;&#xD;
+  &lt;Assembly Path="C:\Users\oshi_\Desktop\Genshin\Cheat\CLibrary.dll" /&gt;&#xD;
+  &lt;Assembly Path="C:\Program Files (x86)\Reference Assemblies\Microsoft\Framework\.NETFramework\v4.8.1\PresentationCore.dll" /&gt;&#xD;
+&lt;/AssemblyExplorer&gt;</s:String>
+	<s:String x:Key="/Default/Environment/Hierarchy/Build/BuildTool/CustomBuildToolPath/@EntryValue">C:\Users\oshi_\AppData\Local\JetBrains\Toolbox\apps\Rider\ch-0\223.8214.53\tools\MSBuild\Current\Bin\amd64\MSBuild.exe</s:String>
+	<s:Boolean x:Key="/Default/ResxEditorPersonal/CheckedGroups/=CheatLib_002FGUI_002FMain/@EntryIndexedValue">True</s:Boolean>
+	
+	
+	
+	<s:Boolean x:Key="/Default/ResxEditorPersonal/Initialized/@EntryValue">True</s:Boolean></wpf:ResourceDictionary>

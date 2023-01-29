@@ -1,8 +1,14 @@
 ﻿{
   "launch": {
-    "name": "CheatLib.dll",
-    "type": "CheatLib.Program",
-    "method": "Main",
-    "argument": "arg"
+    "c++": {
+      "dll": "Bootstrap.dll"
+    },
+    "c#": {
+      "clr": "v4.0.30319",
+      "dll": "CheatLib.dll",
+      "class": "CheatLib.Startup",
+      "method": "Main",
+      "argument": ""
+    }    
   }
 }

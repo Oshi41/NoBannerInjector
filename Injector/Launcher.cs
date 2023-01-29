@@ -160,9 +160,7 @@ namespace Injector
 
         private static bool InjectLibrary()
         {
-            var dllName = "CheatLib.dll";
-            var type = "CheatLib.Program";
-            var method = "Main";
+            var dllName = _settings.Value<string>("launch.c++.dll") ?? "Bootstrap.dll";
 
             if (!_memory.OpenProcess(_process.Id, out var reason))
             {
@@ -170,7 +168,7 @@ namespace Injector
                 return false;
             }
 
-            if (!_memory.InjectDll(dllName))
+            if (!_memory.InjectDll(Path.GetFullPath(dllName)))
             {
                 Console.WriteLine("Can't inject library");
                 return false;

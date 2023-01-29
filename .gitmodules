@@ -1,1 +1,7 @@
 
+[submodule "Bootstrap/RSJp-cpp"]
+	path = Bootstrap/RSJp-cpp
+	url = https://github.com/subh83/RSJp-cpp
+[submodule "Bootstrap/SimpleJSON"]
+	path = Bootstrap/SimpleJSON
+	url = https://github.com/nbsdx/SimpleJSON

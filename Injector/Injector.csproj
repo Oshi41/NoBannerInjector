@@ -155,7 +155,6 @@
     <ItemGroup>
         <Compile Include="BypassProtection.cs" />
         <Compile Include="Launcher.cs" />
-        <Compile Include="LauncherOld.cs" />
         <Compile Include="Properties\AssemblyInfo.cs" />
     </ItemGroup>
     <ItemGroup>

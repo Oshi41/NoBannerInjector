@@ -153,7 +153,6 @@
         </Reference>
     </ItemGroup>
     <ItemGroup>
-        <Compile Include="BypassProtection.cs" />
         <Compile Include="Launcher.cs" />
         <Compile Include="Properties\AssemblyInfo.cs" />
     </ItemGroup>
@@ -161,9 +160,6 @@
       <Content Include="app.manifest" />
       <Content Include="cfg.json" />
       <Content Include="libs\handle.exe">
-        <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-      </Content>
-      <Content Include="libs\Injector.exe">
         <CopyToOutputDirectory>Always</CopyToOutputDirectory>
       </Content>
       <Content Include="web.json">

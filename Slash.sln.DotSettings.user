@@ -5,9 +5,13 @@
   &lt;Assembly Path="C:\Users\oshi_\RiderProjects\NoBannerInjector\bin\x64\Debug\CheatLib.dll" /&gt;&#xD;
   &lt;Assembly Path="C:\Users\oshi_\Desktop\Genshin\Cheat\CLibrary.dll" /&gt;&#xD;
   &lt;Assembly Path="C:\Program Files (x86)\Reference Assemblies\Microsoft\Framework\.NETFramework\v4.8.1\PresentationCore.dll" /&gt;&#xD;
+  &lt;Assembly Path="C:\Users\oshi_\RiderProjects\Slash\packages\GenshinInfo.1.1.1\lib\netstandard2.0\GenshinInfo.dll" /&gt;&#xD;
+  &lt;Assembly Path="C:\Users\oshi_\RiderProjects\Slash\packages\HookManager.1.1.0\lib\net48\HookManager.dll" /&gt;&#xD;
 &lt;/AssemblyExplorer&gt;</s:String>
 	<s:String x:Key="/Default/Environment/Hierarchy/Build/BuildTool/CustomBuildToolPath/@EntryValue">C:\Users\oshi_\AppData\Local\JetBrains\Toolbox\apps\Rider\ch-0\223.8214.53\tools\MSBuild\Current\Bin\amd64\MSBuild.exe</s:String>
 	<s:Boolean x:Key="/Default/ResxEditorPersonal/CheckedGroups/=CheatLib_002FGUI_002FMain/@EntryIndexedValue">True</s:Boolean>
+	<s:Boolean x:Key="/Default/ResxEditorPersonal/CheckedGroups/=example_002FForm1/@EntryIndexedValue">True</s:Boolean>
+	<s:Boolean x:Key="/Default/ResxEditorPersonal/CheckedGroups/=example_002FGUI_002FEnka/@EntryIndexedValue">True</s:Boolean>
 	
 	
 	

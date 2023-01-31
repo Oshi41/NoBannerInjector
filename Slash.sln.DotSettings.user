@@ -13,6 +13,8 @@
 	<s:Boolean x:Key="/Default/ResxEditorPersonal/CheckedGroups/=example_002FForm1/@EntryIndexedValue">True</s:Boolean>
 	<s:Boolean x:Key="/Default/ResxEditorPersonal/CheckedGroups/=example_002FGUI_002FEnka/@EntryIndexedValue">True</s:Boolean>
 	
+	<s:Boolean x:Key="/Default/ResxEditorPersonal/CheckedGroups/=example_002FGUI_002FMainForm/@EntryIndexedValue">True</s:Boolean>
+	
 	
 	
 	<s:Boolean x:Key="/Default/ResxEditorPersonal/Initialized/@EntryValue">True</s:Boolean></wpf:ResourceDictionary>

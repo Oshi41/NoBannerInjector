@@ -1,6 +1,5 @@
 ﻿using System;
 using System.Windows.Forms;
-using CheatLib.GUI;
 
 namespace CheatLib
 {
@@ -9,7 +8,6 @@ namespace CheatLib
         [STAThread]
         public static int Main(string arg)
         {
-            Application.Run(new Main());
             return 0;
         }
     }

@@ -5,7 +5,9 @@ using System.IO;
 using System.Linq;
 using System.Net;
 using System.Reflection;
+using System.Runtime.InteropServices;
 using System.Security.Principal;
+using System.Text;
 using System.Threading;
 using System.Windows.Forms;
 using Memory;
@@ -118,7 +120,28 @@ namespace Injector
             }
 
             Console.WriteLine("Library was injected");
-            Console.ReadKey();
+
+            Console.WriteLine("Enter module name and function to locate address");
+            
+            string s;
+            while (true)
+            {
+                Console.WriteLine("Enter module name");
+                s = Console.ReadLine();
+                if (s == "exit") break;
+                var handle = Imps.GetModuleHandle(s);
+                Console.WriteLine(handle == IntPtr.Zero ? "Module not founded" : "Module founded");
+
+                if (handle != IntPtr.Zero)
+                {
+                    Console.WriteLine("Enter func name");
+                    s = Console.ReadLine();
+                    if (s == "exit") break;
+                    var func = Imps.GetProcAddress(handle, s);
+                    Console.WriteLine(func == UIntPtr.Zero ? "Function not founded" : "Function founded");
+                }
+            }
+
             _process?.Kill();
         }
 

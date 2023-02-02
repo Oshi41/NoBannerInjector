@@ -20,6 +20,17 @@ namespace example
 
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
+            Application.ThreadException += (sender, args) => Console.Error.WriteLine(args.Exception);
+
+
+            if (!CookieManager.INSTANCE.CheckAuthenticationAsync().Result)
+            {
+                var form = new AuthForm();
+                var dialogResult = form.ShowDialog();
+                if (dialogResult != DialogResult.OK && form.DialogResult != DialogResult.OK)
+                    return;
+            }
+
             Application.Run(new Form1());
         }
 

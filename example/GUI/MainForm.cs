@@ -1,4 +1,5 @@
-﻿using System.Threading.Tasks;
+﻿using System;
+using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.Windows.Forms.VisualStyles;
 using HookManager;
@@ -24,22 +25,6 @@ namespace example
                     this.TopLevel = true;
                 }
             });
-
-            AuthChain();
-        }
-
-        public async Task AuthChain()
-        {
-            while (true)
-            {
-                if (AuthServiceExtensions.HasAuth)
-                {
-                    await Task.Delay(1000 * 20);
-                    continue;
-                }
-
-                new AuthForm().ShowDialog(this);
-            }
         }
     }
 }

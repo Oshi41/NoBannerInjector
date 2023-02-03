@@ -4,6 +4,7 @@ using System.IO;
 using System.Linq;
 using System.Net;
 using System.Net.Http;
+using System.Text;
 using System.Threading;
 using System.Threading.Tasks;
 using System.Windows.Forms;
@@ -41,13 +42,19 @@ namespace example
         public string Nickname
         {
             get => Find("_nickname")?.Value;
-            set => _cookies.Add(new Uri(_url), new Cookie("_nickname", value));
+            set => Add("_nickname", value);
         }
 
         public string UUID
         {
             get => Find("_genshin_account_id")?.Value;
-            set => _cookies.Add(new Uri(_url), new Cookie("_genshin_account_id", value));
+            set => Add("_genshin_account_id", value);
+        }
+
+        public bool IsDailySigned
+        {
+            get => Find("_daily_sign")?.Value == "1";
+            set => Add("_daily_sign", value ? 1 : 0);
         }
 
         public string AuthUrl => _url;
@@ -77,6 +84,11 @@ namespace example
         {
             return _cookies.GetCookies(new Uri(_url)).OfType<Cookie>()
                 .FirstOrDefault(x => !x.Expired && x.Name == name);
+        }
+
+        public void Add(string name, object value)
+        {
+            _cookies.Add(new Uri(_url), new Cookie(name, value?.ToString() ?? ""));
         }
 
         public void Load()
@@ -169,9 +181,36 @@ namespace example
             return true;
         }
 
-        public void AddCookie(string name, string val)
+        #region MyRegion
+
+        public async Task<string> PostAsync(string url, object data, IDictionary<string, string> headers = null)
         {
-            _cookies.Add(new Cookie(name, val, "/", _url));
+            using (var client = new HttpClient())
+            {
+                // Set predefined headers
+                if (headers?.Any() == true)
+                {
+                    foreach (var pair in headers)
+                    {
+                        client.DefaultRequestHeaders.Add(pair.Key, pair.Value);
+                    }
+                }
+
+                // Add predefined cookies
+                client.DefaultRequestHeaders.Add("Cookie", CookieHeader);
+
+                // Serialize the data object to a JSON string
+                var json = data is string s_data ? s_data : JsonConvert.SerializeObject(data);
+                var content = new StringContent(json, Encoding.UTF8, "application/json");
+
+                // Make the POST request and get the response
+                var response = await client.PostAsync(url, content);
+                response.EnsureSuccessStatusCode();
+
+                return await response.Content.ReadAsStringAsync();
+            }
         }
+
+        #endregion
     }
 }

@@ -7,7 +7,7 @@ using Microsoft.Web.WebView2.Core;
 using Newtonsoft.Json;
 using Newtonsoft.Json.Linq;
 
-namespace example
+namespace CheatLib
 {
     public partial class AuthForm : Form
     {
@@ -113,7 +113,7 @@ namespace example
                     }
 
                     var assembly = Assembly.GetExecutingAssembly();
-                    var resource = nameof(example) + ".Scripts.post_daily.js";
+                    var resource = nameof(CheatLib) + ".Scripts.post_daily.js";
                     using (var stream = assembly.GetManifestResourceStream(resource))
                     using (var reader = new StreamReader(stream))
                     {

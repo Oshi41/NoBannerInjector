@@ -15,7 +15,7 @@ using Microsoft.Web.WebView2.Core;
 using Newtonsoft.Json;
 using Newtonsoft.Json.Linq;
 
-namespace example
+namespace CheatLib
 {
     public class CookieManager
     {

@@ -4,9 +4,7 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Injector", "Injector\Inject
 EndProject
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "Bootstrap", "Bootstrap\Bootstrap.vcxproj", "{E5B3E5C1-9A46-430C-BF6A-96C8B6DF5B94}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CheatLib", "CheatLib\CheatLib.csproj", "{6688EB24-6D93-435C-9363-178D09286290}"
-EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "example", "example\example.csproj", "{EFB13A14-36FF-439C-AFCA-2DDEE6F54134}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CheatLib", "CheatLib\CheatLib.csproj", "{EFB13A14-36FF-439C-AFCA-2DDEE6F54134}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -22,13 +20,9 @@ Global
 		{70FB8979-7A92-469F-B2E1-9E45E934420F}.Release|x64.Build.0 = Release|x64
 		{70FB8979-7A92-469F-B2E1-9E45E934420F}.Debug|x64.ActiveCfg = Debug|x64
 		{70FB8979-7A92-469F-B2E1-9E45E934420F}.Debug|x64.Build.0 = Debug|x64
-		{6688EB24-6D93-435C-9363-178D09286290}.Debug|x64.ActiveCfg = Debug|x64
-		{6688EB24-6D93-435C-9363-178D09286290}.Debug|x64.Build.0 = Debug|x64
-		{6688EB24-6D93-435C-9363-178D09286290}.Release|x64.ActiveCfg = Release|x64
-		{6688EB24-6D93-435C-9363-178D09286290}.Release|x64.Build.0 = Release|x64
 		{EFB13A14-36FF-439C-AFCA-2DDEE6F54134}.Debug|x64.ActiveCfg = Debug|x64
-		{EFB13A14-36FF-439C-AFCA-2DDEE6F54134}.Debug|x64.Build.0 = Debug|x64
 		{EFB13A14-36FF-439C-AFCA-2DDEE6F54134}.Release|x64.ActiveCfg = Release|x64
+		{EFB13A14-36FF-439C-AFCA-2DDEE6F54134}.Debug|x64.Build.0 = Debug|x64
 		{EFB13A14-36FF-439C-AFCA-2DDEE6F54134}.Release|x64.Build.0 = Release|x64
 	EndGlobalSection
 EndGlobal

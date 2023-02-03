@@ -158,10 +158,7 @@ DWORD WINAPI CreateDotNetRunTime(HMODULE* lpParam)
         Method,
         Param,
         &dwRetCode
-    );    
-
-    HMODULE module = GetModuleHandleA( "mono.dll" );
-    if (module == nullptr)
+    );
 
     if (FAILED(metaHost))
     {
@@ -173,34 +170,6 @@ DWORD WINAPI CreateDotNetRunTime(HMODULE* lpParam)
         return 6;
     }
     return 0;
-}
-
-void GetAllLibs(HMODULE lpParam)
-{
-    std::string res;
-    HMODULE hMods[1024];
-    DWORD cbNeeded;
-    if( EnumProcessModules(lpParam, hMods, sizeof(hMods), &cbNeeded))
-    {
-        for (auto i = 0; i < (cbNeeded / sizeof(HMODULE)); i++ )
-        {
-            TCHAR szModName[MAX_PATH];
-
-            // Get the full path to the module's file.
-
-            if ( GetModuleFileNameEx( lpParam, hMods[i], szModName,
-                                      sizeof(szModName) / sizeof(TCHAR)))
-            {
-                res.append(std::begin(szModName), std::end(szModName));
-                res.append("\n");
-                // Print the module name and handle value.
-                // _Log(szModName);
-            }
-        }
-    }
-
-    MessageBoxA(nullptr, res.c_str(), "Title", 0);
-    _Log(res);
 }
 
 BOOL APIENTRY DllMain(HMODULE hModule, DWORD dwReason, LPVOID lpReserved)

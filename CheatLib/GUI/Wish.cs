@@ -3,7 +3,7 @@ using System.Windows.Forms;
 using GenshinInfo.Managers;
 using GenshinInfo.Services;
 
-namespace example
+namespace CheatLib
 {
     public partial class Wish : UserControl
     {

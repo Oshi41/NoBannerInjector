@@ -4,7 +4,7 @@ using System.Windows.Forms;
 using System.Windows.Forms.VisualStyles;
 using HookManager;
 
-namespace example
+namespace CheatLib
 {
     public partial class Form1 : Form
     {

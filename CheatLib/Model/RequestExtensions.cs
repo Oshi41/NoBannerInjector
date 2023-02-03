@@ -4,7 +4,7 @@ using System.Security.Cryptography;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace example
+namespace CheatLib
 {
     public static class RequestExtensions
     {

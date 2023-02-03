@@ -7,7 +7,7 @@ using System.Web;
 using System.Windows.Forms;
 using Microsoft.CodeAnalysis.CSharp.Syntax;
 
-namespace example
+namespace CheatLib
 {
     public partial class Abyss : UserControl
     {

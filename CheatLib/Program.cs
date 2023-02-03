@@ -6,7 +6,7 @@ using Community.CsharpSqlite;
 using HookManager;
 using Memory;
 
-namespace example
+namespace CheatLib
 {
     static class Program
     {

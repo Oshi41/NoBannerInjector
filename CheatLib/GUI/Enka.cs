@@ -3,7 +3,7 @@ using System.IO;
 using System.Linq;
 using System.Windows.Forms;
 
-namespace example
+namespace CheatLib
 {
     public partial class Enka : UserControl
     {

@@ -1,4 +1,4 @@
-﻿namespace example
+﻿namespace CheatLib
 {
     partial class Form1
     {
@@ -30,10 +30,10 @@
         private void InitializeComponent()
         {
             this.tabPage1 = new System.Windows.Forms.TabPage();
-            this.enka1 = new example.Enka();
+            this.enka1 = new Enka();
             this.tabControl1 = new System.Windows.Forms.TabControl();
             this.tabPage2 = new System.Windows.Forms.TabPage();
-            this.abyss1 = new example.Abyss();
+            this.abyss1 = new Abyss();
             this.tabPage1.SuspendLayout();
             this.tabControl1.SuspendLayout();
             this.tabPage2.SuspendLayout();
@@ -104,11 +104,11 @@
             this.ResumeLayout(false);
         }
 
-        private example.Abyss abyss1;
+        private Abyss abyss1;
 
         private System.Windows.Forms.TabPage tabPage2;
 
-        private example.Enka enka1;
+        private Enka enka1;
 
         private System.Windows.Forms.TabControl tabControl1;
         private System.Windows.Forms.TabPage tabPage1;

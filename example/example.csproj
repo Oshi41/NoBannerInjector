@@ -189,6 +189,7 @@
         <Reference Include="System.ValueTuple, Version=4.0.3.0, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">
           <HintPath>..\packages\System.ValueTuple.4.5.0\lib\net47\System.ValueTuple.dll</HintPath>
         </Reference>
+        <Reference Include="System.Web" />
         <Reference Include="System.Xml.Linq" />
         <Reference Include="System.Data.DataSetExtensions" />
         <Reference Include="Microsoft.CSharp" />
@@ -213,6 +214,12 @@
         <Reference Include="WindowsBase" />
     </ItemGroup>
     <ItemGroup>
+        <Compile Include="GUI\Abyss.cs">
+          <SubType>UserControl</SubType>
+        </Compile>
+        <Compile Include="GUI\Abyss.Designer.cs">
+          <DependentUpon>Abyss.cs</DependentUpon>
+        </Compile>
         <Compile Include="GUI\AuthForm.cs">
           <SubType>Form</SubType>
         </Compile>
@@ -242,6 +249,9 @@
         <Compile Include="Model\WishManager.cs" />
         <Compile Include="Program.cs" />
         <Compile Include="Properties\AssemblyInfo.cs" />
+        <EmbeddedResource Include="GUI\Abyss.resx">
+          <DependentUpon>Abyss.cs</DependentUpon>
+        </EmbeddedResource>
         <EmbeddedResource Include="GUI\AuthForm.resx">
           <DependentUpon>AuthForm.cs</DependentUpon>
         </EmbeddedResource>

@@ -5,7 +5,7 @@
     },
     "c#": {
       "clr": "v4.0.30319",
-      "dll": "CheatLib.dll",
+      "dll": "CheatLib.exe",
       "class": "CheatLib.Startup",
       "method": "Main",
       "argument": ""

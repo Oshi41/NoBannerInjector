@@ -37,7 +37,7 @@ namespace CheatLib
             // 
             // webView21
             // 
-            this.webView21.AllowExternalDrop = false;
+            this.webView21.AllowExternalDrop = true;
             this.webView21.CreationProperties = null;
             this.webView21.DefaultBackgroundColor = System.Drawing.Color.White;
             this.webView21.Dock = System.Windows.Forms.DockStyle.Fill;

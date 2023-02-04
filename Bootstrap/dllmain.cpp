@@ -81,43 +81,46 @@ void LoadConfig()
 
 DWORD WINAPI CreateDotNetRunTime(HMODULE* lpParam)
 {
+    CoInitialize(NULL);
+    AllocConsole();
+    
     LPWSTR AppPath = new WCHAR[_MAX_PATH];
     ::GetModuleFileNameW((HINSTANCE)&__ImageBase, AppPath, _MAX_PATH);
-
+    
     ICLRRuntimeHost* lpRuntimeHost = NULL;
     ICLRRuntimeInfo* lpRuntimeInfo = NULL;
     ICLRMetaHost* lpMetaHost = NULL;
-
+    
     std::wstring tempPath = AppPath;
     int index = tempPath.rfind('\\');
     tempPath.erase(index, tempPath.length() - index);
     tempPath += L"\\";
     tempPath += DllName;
-
+    
     HRESULT metaHost = CLRCreateInstance(
         CLSID_CLRMetaHost,
         IID_ICLRMetaHost,
         (LPVOID*)&lpMetaHost
     );
-
+    
     if (FAILED(metaHost))
     {
         _Log("Failed to create CLR instance");
         return 1;
     }
-
+    
     metaHost = lpMetaHost->GetRuntime(ClrVersion, IID_PPV_ARGS(&lpRuntimeInfo));
-
+    
     if (FAILED(metaHost))
     {
         lpMetaHost->Release();
         _Log("Getting runtime failed");
         return 2;
     }
-
+    
     BOOL fLoadable;
     metaHost = lpRuntimeInfo->IsLoadable(&fLoadable);
-
+    
     if (FAILED(metaHost) || !fLoadable)
     {
         lpRuntimeInfo->Release();
@@ -125,12 +128,12 @@ DWORD WINAPI CreateDotNetRunTime(HMODULE* lpParam)
         _Log("Runtime can't be loaded into the process");
         return 3;
     }
-
+    
     metaHost = lpRuntimeInfo->GetInterface(
         CLSID_CLRRuntimeHost,
         IID_PPV_ARGS(&lpRuntimeHost)
     );
-
+    
     if (FAILED(metaHost))
     {
         lpRuntimeInfo->Release();
@@ -138,9 +141,9 @@ DWORD WINAPI CreateDotNetRunTime(HMODULE* lpParam)
         _Log("Failed to acquire CLR runtime");
         return 4;
     }
-
+    
     metaHost = lpRuntimeHost->Start();
-
+    
     if (FAILED(metaHost))
     {
         lpRuntimeHost->Release();
@@ -149,26 +152,28 @@ DWORD WINAPI CreateDotNetRunTime(HMODULE* lpParam)
         _Log("Failed to start CLR runtime");
         return 5;
     }
-
+    
     DWORD dwRetCode = 0;
-
+    
     metaHost = lpRuntimeHost->ExecuteInDefaultAppDomain(
         (LPWSTR)tempPath.c_str(),
         Class,
         Method,
         Param,
         &dwRetCode
-    );
-
+    );    
+    
     if (FAILED(metaHost))
     {
-        lpRuntimeHost->Stop();
-        lpRuntimeHost->Release();
-        lpRuntimeInfo->Release();
-        lpMetaHost->Release();
+        lpRuntimeHost->Stop();        
         _Log("Unable to execute assembly");
         return 6;
     }
+    
+    lpRuntimeHost->Release();
+    lpRuntimeInfo->Release();
+    lpMetaHost->Release();
+    
     return 0;
 }
 

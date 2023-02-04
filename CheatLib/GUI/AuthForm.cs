@@ -14,7 +14,7 @@ namespace CheatLib
         /// <summary>
         /// possible stages
         /// 0 - navigating to auth url
-        /// 1 - retrieving cookies and to personal user card
+        /// 1 - retrieving cookies and navigate to personal user card
         /// 2 - retrieving Genshin UUID and navigating to Daily check-in
         /// 3 - injecting script to sign-up automatically
         /// 4 - closing window 
@@ -26,7 +26,7 @@ namespace CheatLib
             InitializeComponent();
             Load += async (sender, args) =>
             {
-                await webView21.EnsureCoreWebView2Async();
+                await webView21.EnsureAsync();
                 InitCoreView(null, null);
             };
         }
@@ -36,9 +36,7 @@ namespace CheatLib
             var manager = CookieManager.INSTANCE;
             manager.LoadTo(webView21.CoreWebView2.CookieManager);
             webView21.CoreWebView2.AddWebResourceRequestedFilter("*", CoreWebView2WebResourceContext.All);
-            OnNextStep(null, null);
             webView21.CoreWebView2.NavigationCompleted += OnNextStep;
-            // webView21.CoreWebView2.DOMContentLoaded += OnNextStep;
             webView21.CoreWebView2.WebResourceResponseReceived += async (o, args) =>
             {
                 try
@@ -48,7 +46,7 @@ namespace CheatLib
                     {
                         using (var reader = new StreamReader(stream))
                         {
-                            var jObject = JsonConvert.DeserializeObject<JObject>(reader.ReadToEnd());
+                            var jObject = JsonConvert.DeserializeObject<JObject>(await reader.ReadToEndAsync());
                             if (args.Request.Uri.Contains("getGameRecordCard"))
                             {
                                 manager.UUID = jObject.SelectToken("data.list[0].game_role_id")?.Value<string>();
@@ -56,7 +54,13 @@ namespace CheatLib
                                 OnNextStep(null, null);
                             }
 
-                            if (stage >= 3 && args.Request.Uri.Contains("info?"))
+                            if (stage == 1 && args.Request.Uri.Contains("user/full")
+                                           && jObject.SelectToken("data.user_info.nickname") != null)
+                            {
+                                OnNextStep();
+                            }
+                            
+                            if (stage == 3 && args.Request.Uri.Contains("info?"))
                             {
                                 manager.IsDailySigned = jObject.SelectToken("data.is_sign")?.Value<bool>() == true;
                                 if (manager.IsDailySigned)
@@ -72,6 +76,7 @@ namespace CheatLib
                 {
                 }
             };
+            OnNextStep(null, null);
         }
 
         private async void OnNextStep(object sender = null, EventArgs args = null)
@@ -90,6 +95,8 @@ namespace CheatLib
                         break;
 
                     manager.SaveFrom(cookies);
+                    if (new []{ manager.LT_Token, manager.LT_Uid}.Any(string.IsNullOrEmpty))
+                        break;
 
                     webView21.Source =
                         new Uri("https://www.hoyolab.com/accountCenter/postList?id=" + manager.HoyolabUid);

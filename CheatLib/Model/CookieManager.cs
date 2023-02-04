@@ -23,12 +23,13 @@ namespace CheatLib
 
         private CookieContainer _cookies = new CookieContainer();
         private string _url = "https://www.hoyolab.com";
-        private string _filePath = "cookies.txt";
+        private string _filePath;
         private string _authUrlCheck = "https://bbs-api-os.hoyolab.com/community/notification/wapi/getUserUnreadCount";
         private GenshinInfoManager _genshinInfoManager;
 
         private CookieManager()
         {
+            _filePath = Utils.Relative("settings", "cookies.txt");
             Load();
             Application.ApplicationExit += (sender, args) => Save();
         }
@@ -95,7 +96,7 @@ namespace CheatLib
         {
             if (!File.Exists(_filePath))
             {
-                File.CreateText(_filePath).Close();
+                Utils.CreateFile(_filePath);
                 return;
             }
 

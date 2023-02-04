@@ -161,8 +161,18 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClCompile Include="dllmain.cpp" />
+    <ClCompile Include="il2cpp\il2cpp-init.cpp" />
+    <ClCompile Include="il2cpp\pch.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="export.h" />
+    <ClInclude Include="il2cpp\il2cpp-api-functions.h" />
+    <ClInclude Include="il2cpp\il2cpp-appdata.h" />
+    <ClInclude Include="il2cpp\il2cpp-functions.h" />
+    <ClInclude Include="il2cpp\il2cpp-init.h" />
+    <ClInclude Include="il2cpp\il2cpp-types.h" />
+    <ClInclude Include="il2cpp\il2cpp-unity-functions.h" />
+    <ClInclude Include="il2cpp\pch.h" />
     <ClInclude Include="SimpleJSON\json.hpp" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />

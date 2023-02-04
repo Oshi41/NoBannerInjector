@@ -158,11 +158,13 @@
     </ItemGroup>
     <ItemGroup>
       <Content Include="app.manifest" />
-      <Content Include="cfg.json" />
       <Content Include="libs\handle.exe">
         <CopyToOutputDirectory>Always</CopyToOutputDirectory>
       </Content>
-      <Content Include="web.json">
+      <Content Include="settings\cfg.json">
+        <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+      </Content>
+      <Content Include="settings\web.json">
         <CopyToOutputDirectory>Always</CopyToOutputDirectory>
       </Content>
     </ItemGroup>

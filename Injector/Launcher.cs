@@ -22,6 +22,7 @@ namespace Injector
         private static JObject _web;
         private static Process _process;
         private static Mem _memory = new Mem();
+        private const string _settingsPath = "settings/cfg.json";
 
         [STAThread]
         public static void Main(string[] args)
@@ -43,7 +44,7 @@ namespace Injector
             {
                 string data;
 #if DEBUG
-                data = File.ReadAllText("web.json");
+                data = File.ReadAllText("settings/web.json");
 #else
                 var url = "https://github.com/Oshi41/Injector/blob/master/Injector/conf.json";
                 var request = WebRequest.Create(url);
@@ -71,12 +72,12 @@ namespace Injector
             // Load main config
             try
             {
-                _settings = JsonConvert.DeserializeObject<JObject>(File.ReadAllText("cfg.json"));
+                _settings = JsonConvert.DeserializeObject<JObject>(File.ReadAllText(_settingsPath));
             }
             catch (Exception e)
             {
                 Console.Error.WriteLine(e);
-                File.CreateText("cfg.json").Close();
+                File.CreateText(_settingsPath).Close();
                 _settings = new JObject();
             }
 
@@ -91,7 +92,7 @@ namespace Injector
                 if (dialog.ShowDialog() == DialogResult.OK)
                 {
                     _settings["genshin_path"] = genshPath = dialog.FileName;
-                    File.WriteAllText("cfg.json", JsonConvert.SerializeObject(_settings, Formatting.Indented));
+                    File.WriteAllText(_settingsPath, JsonConvert.SerializeObject(_settings, Formatting.Indented));
                 }
                 else
                     return;
@@ -122,7 +123,7 @@ namespace Injector
             Console.WriteLine("Library was injected");
 
             Console.WriteLine("Enter module name and function to locate address");
-            
+
             string s;
             while (true)
             {

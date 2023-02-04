@@ -42,7 +42,7 @@ namespace CheatLib
 
         private async void SetPage()
         {
-            await webView21.EnsureCoreWebView2Async();
+            await webView21.EnsureAsync();
             webView21.CoreWebView2.Navigate("https://act.hoyolab.com/app/community-game-records-sea/index.html?bbs_presentation_style=fullscreen&bbs_auth_required=true&v=330&gid=2&utm_source=hoyolab&utm_medium=tools");
         }
     }

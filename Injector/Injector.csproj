@@ -161,12 +161,10 @@
       <Content Include="libs\handle.exe">
         <CopyToOutputDirectory>Always</CopyToOutputDirectory>
       </Content>
-      <Content Include="settings\cfg.json">
-        <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-      </Content>
-      <Content Include="settings\web.json">
+      <EmbeddedResource Include="settings\cfg.json" />
+      <EmbeddedResource Include="settings\web.json">
         <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-      </Content>
+      </EmbeddedResource>
     </ItemGroup>
     <ItemGroup>
       <None Include="App.config" />

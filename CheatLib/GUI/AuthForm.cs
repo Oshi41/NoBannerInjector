@@ -26,7 +26,7 @@ namespace CheatLib
             InitializeComponent();
             Load += async (sender, args) =>
             {
-                await webView21.EnsureAsync();
+                await InjectorUtils.EnsureAsync(webView21);
                 InitCoreView(null, null);
             };
         }

@@ -36,14 +36,16 @@ namespace CheatLib
                 { "bbs_theme_device", "1" },
                 { "lang", Thread.CurrentThread.CurrentUICulture.ToString().ToLower() }
             };
-            var queryString = string.Join("&", query.Select(x => $"{Uri.EscapeDataString(x.Key)}=${Uri.EscapeDataString(x.Value)}"));
+            var queryString = string.Join("&",
+                query.Select(x => $"{Uri.EscapeDataString(x.Key)}=${Uri.EscapeDataString(x.Value)}"));
             return new Uri($"{link}?{queryString}");
         }
 
         private async void SetPage()
         {
-            await webView21.EnsureAsync();
-            webView21.CoreWebView2.Navigate("https://act.hoyolab.com/app/community-game-records-sea/index.html?bbs_presentation_style=fullscreen&bbs_auth_required=true&v=330&gid=2&utm_source=hoyolab&utm_medium=tools");
+            await InjectorUtils.EnsureAsync(webView21);
+            webView21.CoreWebView2.Navigate(
+                "https://act.hoyolab.com/app/community-game-records-sea/index.html?bbs_presentation_style=fullscreen&bbs_auth_required=true&v=330&gid=2&utm_source=hoyolab&utm_medium=tools");
         }
     }
 }

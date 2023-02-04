@@ -77,8 +77,14 @@ namespace Injector
             catch (Exception e)
             {
                 Console.Error.WriteLine(e);
-                File.CreateText(_settingsPath).Close();
-                _settings = new JObject();
+                var res = "Injector.settings.cfg.json";
+                using (var resourceStream = Assembly.GetExecutingAssembly().GetManifestResourceStream(res))
+                using (var file = new FileStream(_settingsPath, FileMode.Create))
+                {
+                    resourceStream.CopyTo(file);
+                }
+
+                _settings = JsonConvert.DeserializeObject<JObject>(File.ReadAllText(_settingsPath));
             }
 
             // Open Genshin process
@@ -119,31 +125,6 @@ namespace Injector
                 _process?.Kill();
                 return;
             }
-
-            Console.WriteLine("Library was injected");
-
-            Console.WriteLine("Enter module name and function to locate address");
-
-            string s;
-            while (true)
-            {
-                Console.WriteLine("Enter module name");
-                s = Console.ReadLine();
-                if (s == "exit") break;
-                var handle = Imps.GetModuleHandle(s);
-                Console.WriteLine(handle == IntPtr.Zero ? "Module not founded" : "Module founded");
-
-                if (handle != IntPtr.Zero)
-                {
-                    Console.WriteLine("Enter func name");
-                    s = Console.ReadLine();
-                    if (s == "exit") break;
-                    var func = Imps.GetProcAddress(handle, s);
-                    Console.WriteLine(func == UIntPtr.Zero ? "Function not founded" : "Function founded");
-                }
-            }
-
-            _process?.Kill();
         }
 
         private static bool DisableProtection()

@@ -5,13 +5,14 @@
         <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
         <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
         <ProjectGuid>{EFB13A14-36FF-439C-AFCA-2DDEE6F54134}</ProjectGuid>
-        <OutputType>WinExe</OutputType>
+        <OutputType>Library</OutputType>
         <RootNamespace>CheatLib</RootNamespace>
         <AssemblyName>CheatLib</AssemblyName>
         <TargetFrameworkVersion>v4.8.1</TargetFrameworkVersion>
         <FileAlignment>512</FileAlignment>
         <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
         <Deterministic>true</Deterministic>
+        <LangVersion>7.3</LangVersion>
     </PropertyGroup>
     <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|x64' ">
       <DebugType>pdbonly</DebugType>
@@ -33,6 +34,9 @@
       <PlatformTarget>x64</PlatformTarget>
     </PropertyGroup>
     <ItemGroup>
+        <Reference Include="CheatLib">
+          <HintPath>..\bin\x64\Debug\CheatLib.exe</HintPath>
+        </Reference>
         <Reference Include="example">
           <HintPath>bin\x64\Debug\example.exe</HintPath>
         </Reference>
@@ -226,6 +230,12 @@
         <Compile Include="GUI\AuthForm.Designer.cs">
           <DependentUpon>AuthForm.cs</DependentUpon>
         </Compile>
+        <Compile Include="GUI\DebugWindow.cs">
+          <SubType>UserControl</SubType>
+        </Compile>
+        <Compile Include="GUI\DebugWindow.Designer.cs">
+          <DependentUpon>DebugWindow.cs</DependentUpon>
+        </Compile>
         <Compile Include="GUI\Enka.cs">
           <SubType>UserControl</SubType>
         </Compile>
@@ -243,12 +253,15 @@
         <Compile Include="Model\WishManager.cs" />
         <Compile Include="Startup.cs" />
         <Compile Include="Properties\AssemblyInfo.cs" />
-        <Compile Include="Utils.cs" />
+        <Compile Include="InjectorUtils.cs" />
         <EmbeddedResource Include="GUI\Abyss.resx">
           <DependentUpon>Abyss.cs</DependentUpon>
         </EmbeddedResource>
         <EmbeddedResource Include="GUI\AuthForm.resx">
           <DependentUpon>AuthForm.cs</DependentUpon>
+        </EmbeddedResource>
+        <EmbeddedResource Include="GUI\DebugWindow.resx">
+          <DependentUpon>DebugWindow.cs</DependentUpon>
         </EmbeddedResource>
         <EmbeddedResource Include="GUI\Enka.resx">
           <DependentUpon>Enka.cs</DependentUpon>

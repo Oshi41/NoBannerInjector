@@ -9,7 +9,7 @@ using Microsoft.Web.WebView2.WinForms;
 
 namespace CheatLib
 {
-    public static class Utils
+    public static class InjectorUtils
     {
         public static bool CreateFile(string path)
         {

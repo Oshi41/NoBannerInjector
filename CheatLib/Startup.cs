@@ -1,9 +1,5 @@
 ﻿using System;
-using System.IO;
-using System.Reflection;
-using System.Threading;
 using System.Windows.Forms;
-using Microsoft.Web.WebView2.Core;
 
 namespace CheatLib
 {
@@ -15,7 +11,7 @@ namespace CheatLib
         /// <param name="arg"></param>
         /// <returns></returns>
         [STAThread]
-        static int Main(string arg)
+        public static int Main(string arg)
         {
             Main();
             return 0;
@@ -24,8 +20,7 @@ namespace CheatLib
         /// <summary>
         /// The main entry point for the application.
         /// </summary>
-        [STAThread]
-        static void Main()
+        public static void Main()
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);

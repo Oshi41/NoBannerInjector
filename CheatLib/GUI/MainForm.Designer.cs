@@ -30,13 +30,16 @@
         private void InitializeComponent()
         {
             this.tabPage1 = new System.Windows.Forms.TabPage();
-            this.enka1 = new Enka();
+            this.enka1 = new CheatLib.Enka();
             this.tabControl1 = new System.Windows.Forms.TabControl();
             this.tabPage2 = new System.Windows.Forms.TabPage();
-            this.abyss1 = new Abyss();
+            this.abyss1 = new CheatLib.Abyss();
+            this.tabPage3 = new System.Windows.Forms.TabPage();
+            this.debugWindow1 = new CheatLib.DebugWindow();
             this.tabPage1.SuspendLayout();
             this.tabControl1.SuspendLayout();
             this.tabPage2.SuspendLayout();
+            this.tabPage3.SuspendLayout();
             this.SuspendLayout();
             // 
             // tabPage1
@@ -62,6 +65,7 @@
             // 
             this.tabControl1.Controls.Add(this.tabPage1);
             this.tabControl1.Controls.Add(this.tabPage2);
+            this.tabControl1.Controls.Add(this.tabPage3);
             this.tabControl1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.tabControl1.Location = new System.Drawing.Point(3, 0);
             this.tabControl1.Name = "tabControl1";
@@ -88,6 +92,25 @@
             this.abyss1.Size = new System.Drawing.Size(780, 415);
             this.abyss1.TabIndex = 0;
             // 
+            // tabPage3
+            // 
+            this.tabPage3.Controls.Add(this.debugWindow1);
+            this.tabPage3.Location = new System.Drawing.Point(4, 22);
+            this.tabPage3.Name = "tabPage3";
+            this.tabPage3.Padding = new System.Windows.Forms.Padding(3);
+            this.tabPage3.Size = new System.Drawing.Size(786, 421);
+            this.tabPage3.TabIndex = 2;
+            this.tabPage3.Text = "Debug";
+            this.tabPage3.UseVisualStyleBackColor = true;
+            // 
+            // debugWindow1
+            // 
+            this.debugWindow1.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.debugWindow1.Location = new System.Drawing.Point(3, 3);
+            this.debugWindow1.Name = "debugWindow1";
+            this.debugWindow1.Size = new System.Drawing.Size(780, 415);
+            this.debugWindow1.TabIndex = 0;
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -101,8 +124,13 @@
             this.tabPage1.ResumeLayout(false);
             this.tabControl1.ResumeLayout(false);
             this.tabPage2.ResumeLayout(false);
+            this.tabPage3.ResumeLayout(false);
             this.ResumeLayout(false);
         }
+
+        private CheatLib.DebugWindow debugWindow1;
+
+        private System.Windows.Forms.TabPage tabPage3;
 
         private Abyss abyss1;
 

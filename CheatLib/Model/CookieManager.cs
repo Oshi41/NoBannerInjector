@@ -29,7 +29,7 @@ namespace CheatLib
 
         private CookieManager()
         {
-            _filePath = Utils.Relative("settings", "cookies.txt");
+            _filePath = InjectorUtils.Relative("settings", "cookies.txt");
             Load();
             Application.ApplicationExit += (sender, args) => Save();
         }
@@ -96,7 +96,7 @@ namespace CheatLib
         {
             if (!File.Exists(_filePath))
             {
-                Utils.CreateFile(_filePath);
+                InjectorUtils.CreateFile(_filePath);
                 return;
             }
 

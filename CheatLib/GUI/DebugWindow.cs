@@ -39,14 +39,15 @@ namespace CheatLib
             comboBox1.Items.Clear();
 
             var set = new Dictionary<string, ProcessModule>();
-            
+
             var currentProcess = Process.GetCurrentProcess();
             foreach (ProcessModule module in currentProcess.Modules)
             {
-                set.Add(module.ModuleName, module);
+                if (!set.ContainsKey(module.ModuleName))
+                    set.Add(module.ModuleName, module);
             }
 
-            comboBox1.Items.Add(set.Values.OrderBy(x => x.ModuleName).ToArray());
+            comboBox1.Items.AddRange(set.Values.OrderBy(x => x.ModuleName).Distinct().ToArray());
         }
 
         private void SearchForModule(object sender = null, EventArgs e = null)

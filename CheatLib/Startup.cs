@@ -13,14 +13,14 @@ namespace CheatLib
         [STAThread]
         public static int Main(string arg)
         {
-            Main();
+            Run();
             return 0;
         }
 
         /// <summary>
         /// The main entry point for the application.
         /// </summary>
-        public static void Main()
+        public static void Run()
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);

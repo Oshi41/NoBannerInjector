@@ -1,7 +1,6 @@
 ﻿using System;
 using System.IO;
 using System.Linq;
-using System.Reflection;
 using System.Windows.Forms;
 using Microsoft.Web.WebView2.Core;
 using Newtonsoft.Json;
@@ -59,7 +58,7 @@ namespace CheatLib
                             {
                                 OnNextStep();
                             }
-                            
+
                             if (stage == 3 && args.Request.Uri.Contains("info?"))
                             {
                                 manager.IsDailySigned = jObject.SelectToken("data.is_sign")?.Value<bool>() == true;
@@ -95,7 +94,7 @@ namespace CheatLib
                         break;
 
                     manager.SaveFrom(cookies);
-                    if (new []{ manager.LT_Token, manager.LT_Uid}.Any(string.IsNullOrEmpty))
+                    if (new[] { manager.LT_Token, manager.LT_Uid }.Any(string.IsNullOrEmpty))
                         break;
 
                     webView21.Source =
@@ -119,24 +118,7 @@ namespace CheatLib
                         break;
                     }
 
-                    var assembly = Assembly.GetExecutingAssembly();
-                    var resource = nameof(CheatLib) + ".Scripts.post_daily.js";
-                    using (var stream = assembly.GetManifestResourceStream(resource))
-                    using (var reader = new StreamReader(stream))
-                    {
-                        var script = await reader.ReadToEndAsync();
-                        try
-                        {
-                            var result = await webView21.CoreWebView2.ExecuteScriptWithResultAsync(script);
-                            _ = result.Exception;
-                            Console.WriteLine($"Daily script result: {result}");
-                        }
-                        catch (Exception e)
-                        {
-                            Console.Error.WriteLine(e);
-                        }
-                    }
-
+                    await InjectorUtils.ExecuteScriptAsync(webView21, "post_daily.js");
                     break;
 
                 case 4:

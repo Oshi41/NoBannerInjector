@@ -22,6 +22,8 @@ namespace CheatLib
         /// </summary>
         public static void Run()
         {
+            LanguageSwitcher.LoadLanguage();
+
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
             Application.ThreadException += (sender, args) =>

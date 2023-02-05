@@ -114,4 +114,25 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
+  <data name="enka" xml:space="preserve">
+    <value>Enka</value>
+  </data>
+  <data name="debug" xml:space="preserve">
+    <value>Debug</value>
+  </data>
+  <data name="achievements" xml:space="preserve">
+    <value>Achievements</value>
+  </data>
+  <data name="abyss" xml:space="preserve">
+    <value>Abyss</value>
+  </data>
+  <data name="file" xml:space="preserve">
+    <value>File</value>
+  </data>
+  <data name="language" xml:space="preserve">
+    <value>Language</value>
+  </data>
+  <data name="refresh_tab" xml:space="preserve">
+    <value>Refresh Tab</value>
+  </data>
 </root>

@@ -1,12 +1,15 @@
 #include <Windows.h>
-#include "utils.h"
 #include <metahost.h>
+#include "utils.h"
+#include "il2cpp/il2cpp-init.h"
+
 
 DWORD WINAPI CreateClrRuntime(HMODULE* lpParam)
 {
     AllocConsole();
-    CoInitialize(NULL);
-
+    CoInitialize(NULL);    
+    InitIL2CPP();
+    
     if (!LoadConfig(lpParam))
     {
         _Log("Cannot load config");

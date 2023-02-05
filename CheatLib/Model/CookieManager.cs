@@ -5,12 +5,9 @@ using System.Linq;
 using System.Net;
 using System.Net.Http;
 using System.Text;
-using System.Threading;
 using System.Threading.Tasks;
 using System.Windows.Forms;
-using Community.CsharpSqlite;
 using GenshinInfo.Managers;
-using GenshinInfo.Services;
 using Microsoft.Web.WebView2.Core;
 using Newtonsoft.Json;
 using Newtonsoft.Json.Linq;
@@ -92,15 +89,9 @@ namespace CheatLib
             _cookies.Add(new Uri(_url), new Cookie(name, value?.ToString() ?? ""));
         }
 
-        public void Load()
+        public async Task Load()
         {
-            if (!File.Exists(_filePath))
-            {
-                InjectorUtils.CreateFile(_filePath);
-                return;
-            }
-
-            foreach (var s in File.ReadAllText(_filePath).Split(';'))
+            foreach (var s in (await InjectorUtils.ReadFile(_filePath)).Split(';'))
                 _cookies.SetCookies(new Uri(_url), s);
         }
 
@@ -126,13 +117,21 @@ namespace CheatLib
         {
             foreach (var cookie in from)
             {
-                var copy = new Cookie(cookie.Name, cookie.Value, cookie.Path, cookie.Domain)
+                try
                 {
-                    Secure = cookie.IsSecure,
-                    Expires = cookie.Expires,
-                    HttpOnly = cookie.IsHttpOnly
-                };
-                _cookies.Add(copy);
+                    var copy = new Cookie(cookie.Name, cookie.Value, cookie.Path, cookie.Domain)
+                    {
+                        Secure = cookie.IsSecure,
+                        Expires = cookie.Expires,
+                        HttpOnly = cookie.IsHttpOnly
+                    };
+                    _cookies.Add(copy);
+                }
+                catch (Exception e)
+                {
+                    Console.WriteLine("Error during parsing cookies");
+                    Console.WriteLine(e);
+                }
             }
         }
 
@@ -165,24 +164,11 @@ namespace CheatLib
                     return false;
                 }
             }
-            else
-            {
-                try
-                {
-                    return await this.GenshinInfoManager.CheckLogin();
-                }
-                catch (Exception e)
-                {
-                    Console.Error.WriteLine(e);
-                    return false;
-                }
-            }
-
 
             return true;
         }
 
-        #region MyRegion
+        #region Http work
 
         public async Task<string> PostAsync(string url, object data, IDictionary<string, string> headers = null)
         {
@@ -209,6 +195,28 @@ namespace CheatLib
                 response.EnsureSuccessStatusCode();
 
                 return await response.Content.ReadAsStringAsync();
+            }
+        }
+
+
+        public async Task<JObject> GetJsonAsync(string url, IDictionary<string, string> headers = null)
+        {
+            using (var client = new HttpClient())
+            {
+                // Set predefined headers
+                if (headers?.Any() == true)
+                {
+                    foreach (var pair in headers)
+                    {
+                        client.DefaultRequestHeaders.Add(pair.Key, pair.Value);
+                    }
+                }
+
+                // Make the POST request and get the response
+                var response = await client.GetAsync(url);
+                response.EnsureSuccessStatusCode();
+
+                return JsonConvert.DeserializeObject<JObject>(await response.Content.ReadAsStringAsync());
             }
         }
 

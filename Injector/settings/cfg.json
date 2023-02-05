@@ -1,4 +1,5 @@
 ﻿{
+  "lang": "en-us",
   "launch": {
     "c++": {
       "dll": "Bootstrap.dll"

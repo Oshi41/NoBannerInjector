@@ -78,11 +78,74 @@ namespace CheatLib.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Auto pickup.
+        /// </summary>
+        internal static string auto_f {
+            get {
+                return ResourceManager.GetString("auto_f", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Auto loot.
+        /// </summary>
+        internal static string auto_pick_up {
+            get {
+                return ResourceManager.GetString("auto_pick_up", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Automatically opens chests with other treasures..
+        /// </summary>
+        internal static string auto_treassure_tootip {
+            get {
+                return ResourceManager.GetString("auto_treassure_tootip", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Auto treasure.
+        /// </summary>
+        internal static string auto_treasure {
+            get {
+                return ResourceManager.GetString("auto_treasure", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Camera zoom.
+        /// </summary>
+        internal static string camera_zoom {
+            get {
+                return ResourceManager.GetString("camera_zoom", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Debug.
         /// </summary>
         internal static string debug {
             get {
                 return ResourceManager.GetString("debug", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Delay range (ms).
+        /// </summary>
+        internal static string delay_time__ms_ {
+            get {
+                return ResourceManager.GetString("delay_time__ms_", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Enable.
+        /// </summary>
+        internal static string enable {
+            get {
+                return ResourceManager.GetString("enable", resourceCulture);
             }
         }
         
@@ -114,11 +177,65 @@ namespace CheatLib.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Max zoom.
+        /// </summary>
+        internal static string max_zoom {
+            get {
+                return ResourceManager.GetString("max_zoom", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Enable increasing camera zoom..
+        /// </summary>
+        internal static string max_zoom_tooltip {
+            get {
+                return ResourceManager.GetString("max_zoom_tooltip", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Auto pickup dropped items for you. Works with random delay to simulate human-like behavior..
+        /// </summary>
+        internal static string pickup_tooltip {
+            get {
+                return ResourceManager.GetString("pickup_tooltip", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Refresh Tab.
         /// </summary>
         internal static string refresh_tab {
             get {
                 return ResourceManager.GetString("refresh_tab", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Settings.
+        /// </summary>
+        internal static string settings {
+            get {
+                return ResourceManager.GetString("settings", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Simulate human.
+        /// </summary>
+        internal static string simulate_human {
+            get {
+                return ResourceManager.GetString("simulate_human", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Zoom scale: {0}.
+        /// </summary>
+        internal static string zoom_scale {
+            get {
+                return ResourceManager.GetString("zoom_scale", resourceCulture);
             }
         }
     }

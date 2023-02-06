@@ -13,12 +13,6 @@ namespace CheatLib
             LanguageSwitcher.RegisterLanguageSwitcher(this);
         }
 
-        protected override async void OnLoad(EventArgs e)
-        {
-            base.OnLoad(e);
-            RefreshControl();
-        }
-
         public async void RefreshControl()
         {
             webView21.Source = new Uri("https://act.hoyolab.com/app/community-game-records-sea/index.html" +

@@ -32,4 +32,46 @@
     <data name="refresh_tab" xml:space="preserve">
         <value>Перезагрузить окно</value>
     </data>
+    <data name="settings" xml:space="preserve">
+        <value>Настройки</value>
+    </data>
+    <data name="auto_f" xml:space="preserve">
+        <value>Авто подбор</value>
+    </data>
+    <data name="auto_pick_up" xml:space="preserve">
+        <value>Авто-лут</value>
+    </data>
+    <data name="simulate_human" xml:space="preserve">
+        <value>Имитировать задержку</value>
+    </data>
+    <data name="auto_treasure" xml:space="preserve">
+        <value>Быстрое открытие</value>
+    </data>
+    <data name="delay_time__ms_" xml:space="preserve">
+        <value>Время между кликами (млс)</value>
+    </data>
+    <data name="pickup_tooltip" xml:space="preserve">
+        <value>Автоматически подбирает вещи. Использует случайную задержку для симуляции человеческого поведения.</value>
+    </data>
+    <data name="auto_treassure_tootip" xml:space="preserve">
+        <value>Автоматически открывает сундуки и другие сокровища</value>
+    </data>
+    <data name="camera_zoom" xml:space="preserve">
+        <value>Дистанция камеры</value>
+    </data>
+    <data name="enable" xml:space="preserve">
+        <value>Включить</value>
+    </data>
+    <data name="zoom_scale" xml:space="preserve">
+        <value>Множитель дистанции: {0}</value>
+    </data>
+    <data name="max_zoom" xml:space="preserve">
+        <value>Максимальная дистанция</value>
+    </data>
+    <data name="max_zoom_tooltip" xml:space="preserve">
+        <value>Включить удаление камеры.</value>
+    </data>
+    <data name="enable_ESP" xml:space="preserve">
+        <value>Включить ESP</value>
+    </data>
 </root>

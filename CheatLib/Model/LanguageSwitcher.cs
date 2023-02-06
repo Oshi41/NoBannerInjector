@@ -4,6 +4,7 @@ using System.Globalization;
 using System.IO;
 using System.Threading;
 using System.Threading.Tasks;
+using System.Windows.Forms;
 using CheatLib.Properties;
 using Newtonsoft.Json;
 using Newtonsoft.Json.Linq;
@@ -15,7 +16,7 @@ namespace CheatLib
         private static readonly string _path = InjectorUtils.Relative("settings", "cfg.json");
         private static WeakCollection<IRefresh> _collection = new WeakCollection<IRefresh>();
         public static event EventHandler OnLanguageChanged;
-        
+
         public static void ChangeLanguage(CultureInfo info)
         {
             Resources.Culture = info;
@@ -41,6 +42,14 @@ namespace CheatLib
         public static void RegisterLanguageSwitcher(IRefresh refresh)
         {
             _collection.Add(refresh);
+            if (refresh is UserControl control)
+            {
+                control.Load += (sender, args) => { refresh.RefreshControl(); };
+            }
+            if (refresh is Form form)
+            {
+                form.Load += (sender, args) => { refresh.RefreshControl(); };
+            }
         }
 
         public static void LoadLanguage()

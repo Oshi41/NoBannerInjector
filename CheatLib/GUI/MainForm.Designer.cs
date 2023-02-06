@@ -34,6 +34,7 @@ namespace CheatLib
             this.tabPage1 = new System.Windows.Forms.TabPage();
             this.enka1 = new CheatLib.Enka();
             this.tabControl1 = new System.Windows.Forms.TabControl();
+            this.tabPage5 = new System.Windows.Forms.TabPage();
             this.tabPage2 = new System.Windows.Forms.TabPage();
             this.abyss1 = new CheatLib.Abyss();
             this.tabPage4 = new System.Windows.Forms.TabPage();
@@ -46,8 +47,10 @@ namespace CheatLib
             this.enToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.ruToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripMenuItem4 = new System.Windows.Forms.ToolStripMenuItem();
+            this.settings1 = new CheatLib.Settings();
             this.tabPage1.SuspendLayout();
             this.tabControl1.SuspendLayout();
+            this.tabPage5.SuspendLayout();
             this.tabPage2.SuspendLayout();
             this.tabPage4.SuspendLayout();
             this.tabPage3.SuspendLayout();
@@ -73,6 +76,7 @@ namespace CheatLib
             // 
             // tabControl1
             // 
+            this.tabControl1.Controls.Add(this.tabPage5);
             this.tabControl1.Controls.Add(this.tabPage1);
             this.tabControl1.Controls.Add(this.tabPage2);
             this.tabControl1.Controls.Add(this.tabPage4);
@@ -83,6 +87,16 @@ namespace CheatLib
             this.tabControl1.SelectedIndex = 0;
             this.tabControl1.Size = new System.Drawing.Size(826, 393);
             this.tabControl1.TabIndex = 0;
+            // 
+            // tabPage5
+            // 
+            this.tabPage5.Controls.Add(this.settings1);
+            this.tabPage5.Location = new System.Drawing.Point(4, 22);
+            this.tabPage5.Name = "tabPage5";
+            this.tabPage5.Size = new System.Drawing.Size(818, 367);
+            this.tabPage5.TabIndex = 4;
+            this.tabPage5.Text = "settings";
+            this.tabPage5.UseVisualStyleBackColor = true;
             // 
             // tabPage2
             // 
@@ -155,7 +169,7 @@ namespace CheatLib
             // 
             this.toolStripMenuItem3.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] { this.enToolStripMenuItem, this.ruToolStripMenuItem });
             this.toolStripMenuItem3.Name = "toolStripMenuItem3";
-            this.toolStripMenuItem3.Size = new System.Drawing.Size(152, 22);
+            this.toolStripMenuItem3.Size = new System.Drawing.Size(80, 22);
             this.toolStripMenuItem3.Text = "1";
             // 
             // enToolStripMenuItem
@@ -173,9 +187,17 @@ namespace CheatLib
             // toolStripMenuItem4
             // 
             this.toolStripMenuItem4.Name = "toolStripMenuItem4";
-            this.toolStripMenuItem4.Size = new System.Drawing.Size(152, 22);
+            this.toolStripMenuItem4.Size = new System.Drawing.Size(80, 22);
             this.toolStripMenuItem4.Text = "2";
             this.toolStripMenuItem4.Click += new System.EventHandler(this.toolStripMenuItem4_Click);
+            // 
+            // settings1
+            // 
+            this.settings1.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.settings1.Location = new System.Drawing.Point(0, 0);
+            this.settings1.Name = "settings1";
+            this.settings1.Size = new System.Drawing.Size(818, 367);
+            this.settings1.TabIndex = 0;
             // 
             // Form1
             // 
@@ -188,6 +210,7 @@ namespace CheatLib
             this.Name = "Form1";
             this.tabPage1.ResumeLayout(false);
             this.tabControl1.ResumeLayout(false);
+            this.tabPage5.ResumeLayout(false);
             this.tabPage2.ResumeLayout(false);
             this.tabPage4.ResumeLayout(false);
             this.tabPage3.ResumeLayout(false);
@@ -196,6 +219,10 @@ namespace CheatLib
             this.ResumeLayout(false);
             this.PerformLayout();
         }
+
+        private CheatLib.Settings settings1;
+
+        private System.Windows.Forms.TabPage tabPage5;
 
         private System.Windows.Forms.ToolStripMenuItem toolStripMenuItem4;
 

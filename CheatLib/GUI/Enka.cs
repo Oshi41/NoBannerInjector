@@ -13,12 +13,6 @@ namespace CheatLib
             InjectorUtils.EnsureAsync(webView21);
         }
 
-        protected override async void OnLoad(EventArgs e)
-        {
-            base.OnLoad(e);
-            RefreshControl();
-        }
-
         public async void RefreshControl()
         {
             var uuid = CookieManager.INSTANCE.UUID;

@@ -10,13 +10,12 @@ namespace CheatLib
         public Achievments()
         {
             InitializeComponent();
-            InjectorUtils.EnsureAsync(webView21);
-            LanguageSwitcher.RegisterLanguageSwitcher(this);
+            InitAsync();
         }
 
-        protected override async void OnLoad(EventArgs e)
+        private async void InitAsync()
         {
-            base.OnLoad(e);
+            await InjectorUtils.EnsureAsync(webView21);
             webView21.CoreWebView2.AddWebResourceRequestedFilter("*", CoreWebView2WebResourceContext.All);
             webView21.CoreWebView2.NavigationCompleted += async (sender, args) =>
             {
@@ -27,7 +26,7 @@ namespace CheatLib
                 }
             };
             webView21.CoreWebView2.WebResourceResponseReceived += (sender, args) => { };
-            RefreshControl();
+            LanguageSwitcher.RegisterLanguageSwitcher(this);
         }
 
         public async void RefreshControl()

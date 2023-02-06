@@ -42,18 +42,13 @@ namespace CheatLib
             }
         }
 
-        protected override void OnLoad(EventArgs e)
-        {
-            base.OnLoad(e);
-            RefreshControl();
-        }
-
         public void RefreshControl()
         {
             tabPage1.Text = Resources.enka;
             tabPage2.Text = Resources.abyss;
             tabPage3.Text = Resources.debug;
             tabPage4.Text = Resources.achievements;
+            tabPage5.Text = Resources.settings;
             toolStripMenuItem1.Text = Resources.file;
             toolStripMenuItem3.Text = Resources.language;
             toolStripMenuItem4.Text = Resources.refresh_tab;

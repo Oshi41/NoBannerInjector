@@ -39,15 +39,15 @@ namespace CheatLib
         public string ImageUrl { get; set; }
         public string Name { get; set; }
 
-        public List<Category> Children { get; } = new List<Category>();
+        public ConcurrentBag<Category> Children { get; set; } = new ConcurrentBag<Category>();
     }
 
     public class MapManager
     {
         public static MapManager INSTANCE = new MapManager();
-        private readonly ConcurrentBag<Point> _points;
-        private readonly ConcurrentBag<Category> _categories;
-        private readonly string _filePath;
+        private ConcurrentBag<Point> _points;
+        private ConcurrentBag<Category> _categories;
+        private readonly string[] _imageNames = { "icon", "image" };
 
         public IReadOnlyList<Point> Points => _points.ToList().AsReadOnly();
         public IReadOnlyList<Category> Categories => _categories.ToList().AsReadOnly();
@@ -56,23 +56,24 @@ namespace CheatLib
         {
             _points = new ConcurrentBag<Point>();
             _categories = new ConcurrentBag<Category>();
-            _filePath = InjectorUtils.Relative("settings", "map.json");
             LoadAll();
         }
 
         public async Task LoadAll()
         {
             var lang = Thread.CurrentThread.CurrentUICulture;
-            var tasks = new List<Task>();
+            _categories = new ConcurrentBag<Category>();
+            _points = new ConcurrentBag<Point>();
+            var all_worlds = Enum.GetValues(typeof(World)).OfType<World>().ToList();
+            var points = all_worlds.Select(x => LoadPoints(x, lang)).ToList();
+            var categories = all_worlds.Select(x => LoadCategories(x, lang)).ToList();
 
-            foreach (var world in Enum.GetValues(typeof(World)).OfType<World>())
-            {
-                tasks.Add(LoadPoints(world, lang).ContinueWith(task => task.Result.ForEach(x => _points.Add(x))));
-                tasks.Add(
-                    LoadCategories(world, lang).ContinueWith(task => MargeCategories(task.Result)));
-            }
+            await Task.WhenAll(points.OfType<Task>().Union(categories.OfType<Task>()));
 
-            await Task.WhenAll(tasks);
+            foreach (var point in points.SelectMany(x => x.Result))
+                _points.Add(point);
+
+            MargeCategories(categories.SelectMany(x => x.Result), _categories);
         }
 
         private async Task<List<Point>> LoadPoints(World world, CultureInfo cultureInfo)
@@ -148,21 +149,20 @@ namespace CheatLib
             {
                 Id = token["id"].Value<int>(),
                 Name = token["name"].Value<string>(),
-                ImageUrl = token["image"]?.Value<string>(),
+                ImageUrl = _imageNames.Select(x => token[x]?.Value<string>())
+                    .FirstOrDefault(x => !string.IsNullOrEmpty(x)) ?? ""
             };
 
             var children = token["children"]?.AsEnumerable().Select(Parse)?.ToList();
-            if (children?.Any() == true)
-                cat.Children.AddRange(children);
+            children?.ForEach(x => cat.Children.Add(x));
 
             return cat;
         }
 
-        private void MargeCategories(List<Category> resp, Category root = null)
+        private void MargeCategories(IEnumerable<Category> resp, ConcurrentBag<Category> source)
         {
             foreach (var category in resp)
             {
-                var source = root?.Children ?? _categories.AsEnumerable();
                 var other = source?.FirstOrDefault(x => x.Id == category.Id);
                 if (other == null)
                 {
@@ -172,15 +172,12 @@ namespace CheatLib
                         Id = category.Id,
                         ImageUrl = category.ImageUrl
                     };
-
-                    if (root?.Children != null)
-                        root.Children.Add(other);
-                    else _categories.Add(other);
+                    source.Add(other);
                 }
 
                 if (category.Children.Any())
                 {
-                    MargeCategories(category.Children, other);
+                    MargeCategories(category.Children, other.Children);
                 }
             }
         }

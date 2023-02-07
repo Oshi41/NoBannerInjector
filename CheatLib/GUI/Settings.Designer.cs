@@ -34,6 +34,8 @@ namespace CheatLib
             this.components = new System.ComponentModel.Container();
             this.scrollableControl1 = new System.Windows.Forms.ScrollableControl();
             this.groupBox3 = new System.Windows.Forms.GroupBox();
+            this.esp_search = new System.Windows.Forms.TextBox();
+            this.treeView1 = new System.Windows.Forms.TreeView();
             this.enable_esp = new System.Windows.Forms.CheckBox();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
             this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
@@ -66,6 +68,8 @@ namespace CheatLib
             // 
             // groupBox3
             // 
+            this.groupBox3.Controls.Add(this.esp_search);
+            this.groupBox3.Controls.Add(this.treeView1);
             this.groupBox3.Controls.Add(this.enable_esp);
             this.groupBox3.Dock = System.Windows.Forms.DockStyle.Fill;
             this.groupBox3.Location = new System.Drawing.Point(0, 141);
@@ -74,6 +78,25 @@ namespace CheatLib
             this.groupBox3.TabIndex = 5;
             this.groupBox3.TabStop = false;
             this.groupBox3.Text = "ESP";
+            // 
+            // esp_search
+            // 
+            this.esp_search.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.esp_search.Dock = System.Windows.Forms.DockStyle.Top;
+            this.esp_search.Location = new System.Drawing.Point(3, 40);
+            this.esp_search.Name = "esp_search";
+            this.esp_search.Size = new System.Drawing.Size(346, 20);
+            this.esp_search.TabIndex = 2;
+            this.esp_search.TextChanged += new System.EventHandler(this.esp_search_TextChanged);
+            // 
+            // treeView1
+            // 
+            this.treeView1.CheckBoxes = true;
+            this.treeView1.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.treeView1.Location = new System.Drawing.Point(3, 40);
+            this.treeView1.Name = "treeView1";
+            this.treeView1.Size = new System.Drawing.Size(346, 130);
+            this.treeView1.TabIndex = 1;
             // 
             // enable_esp
             // 
@@ -196,6 +219,7 @@ namespace CheatLib
             this.Size = new System.Drawing.Size(352, 314);
             this.scrollableControl1.ResumeLayout(false);
             this.groupBox3.ResumeLayout(false);
+            this.groupBox3.PerformLayout();
             this.groupBox2.ResumeLayout(false);
             this.tableLayoutPanel1.ResumeLayout(false);
             this.tableLayoutPanel1.PerformLayout();
@@ -203,6 +227,10 @@ namespace CheatLib
             this.groupBox1.ResumeLayout(false);
             this.ResumeLayout(false);
         }
+
+        private System.Windows.Forms.TextBox esp_search;
+
+        private System.Windows.Forms.TreeView treeView1;
 
         private System.Windows.Forms.TrackBar trackBar1;
         private System.Windows.Forms.CheckBox auto_treassure;

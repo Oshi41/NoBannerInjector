@@ -26,7 +26,7 @@ public partial class WebPageView : UserControl
     {
         if (d is WebPageView view)
         {
-            view.Navigate(e.NewValue.ToString());
+            view.Navigate(e.NewValue?.ToString());
         }
     }
 
@@ -48,7 +48,7 @@ public partial class WebPageView : UserControl
     {
         if (d is WebPageView view)
         {
-            view.ChangeLang(e.NewValue.ToString());
+            view.ChangeLang(e.NewValue?.ToString());
         }
     }
 

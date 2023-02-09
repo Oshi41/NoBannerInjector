@@ -15,24 +15,24 @@
         <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
         <LangVersion>11</LangVersion>
     </PropertyGroup>
-    <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
-        <PlatformTarget>AnyCPU</PlatformTarget>
-        <DebugSymbols>true</DebugSymbols>
-        <DebugType>full</DebugType>
-        <Optimize>false</Optimize>
-        <OutputPath>bin\Debug\</OutputPath>
-        <DefineConstants>DEBUG;TRACE</DefineConstants>
-        <ErrorReport>prompt</ErrorReport>
-        <WarningLevel>4</WarningLevel>
+    <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|x64' ">
+      <DebugType>pdbonly</DebugType>
+      <Optimize>true</Optimize>
+      <DefineConstants>TRACE</DefineConstants>
+      <ErrorReport>prompt</ErrorReport>
+      <WarningLevel>4</WarningLevel>
+      <OutputPath>bin\x64\Release\</OutputPath>
+      <PlatformTarget>x64</PlatformTarget>
     </PropertyGroup>
-    <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
-        <PlatformTarget>AnyCPU</PlatformTarget>
-        <DebugType>pdbonly</DebugType>
-        <Optimize>true</Optimize>
-        <OutputPath>bin\Release\</OutputPath>
-        <DefineConstants>TRACE</DefineConstants>
-        <ErrorReport>prompt</ErrorReport>
-        <WarningLevel>4</WarningLevel>
+    <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|x64' ">
+      <DebugSymbols>true</DebugSymbols>
+      <DebugType>full</DebugType>
+      <Optimize>false</Optimize>
+      <DefineConstants>DEBUG;TRACE</DefineConstants>
+      <ErrorReport>prompt</ErrorReport>
+      <WarningLevel>4</WarningLevel>
+      <OutputPath>bin\x64\Debug\</OutputPath>
+      <PlatformTarget>x64</PlatformTarget>
     </PropertyGroup>
     <ItemGroup>
         <Reference Include="MaterialDesignColors, Version=2.1.1.0, Culture=neutral, PublicKeyToken=df2a72020bd7962a, processorArchitecture=MSIL">
@@ -81,21 +81,33 @@
         <Compile Include="Controls\AuthControl.xaml.cs">
           <DependentUpon>AuthControl.xaml</DependentUpon>
         </Compile>
+        <Compile Include="Controls\HelpToggle.xaml.cs">
+          <DependentUpon>HelpToggle.xaml</DependentUpon>
+        </Compile>
+        <Compile Include="Controls\SettingsView.xaml.cs">
+          <DependentUpon>SettingsView.xaml</DependentUpon>
+        </Compile>
         <Compile Include="Controls\WebPageView.xaml.cs">
           <DependentUpon>WebPageView.xaml</DependentUpon>
         </Compile>
         <Compile Include="Converters\UrlConverter.cs" />
         <Compile Include="Extensions\DepExtensions.cs" />
         <Compile Include="Extensions\LibExtensions.cs" />
+        <Compile Include="Extensions\WebExtensions.cs" />
         <Compile Include="Model\Cookies.cs" />
+        <Compile Include="Model\MapManager.cs" />
         <Compile Include="Startup.cs" />
+        <Compile Include="ViewModels\AchievementsVm.cs" />
         <Compile Include="ViewModels\MainViewModel.cs" />
+        <Compile Include="ViewModels\SettingsVm.cs" />
         <Compile Include="ViewModels\SimplePageViewModel.cs" />
         <Page Include="App.xaml">
             <Generator>MSBuild:Compile</Generator>
             <SubType>Designer</SubType>
         </Page>
         <Page Include="Controls\AuthControl.xaml" />
+        <Page Include="Controls\HelpToggle.xaml" />
+        <Page Include="Controls\SettingsView.xaml" />
         <Page Include="Controls\WebPageView.xaml" />
         <Page Include="DataTemplates.xaml" />
         <Page Include="MainWindow.xaml">
@@ -121,7 +133,7 @@
             <DependentUpon>Resources.resx</DependentUpon>
         </Compile>
         <EmbeddedResource Include="Properties\Resources.resx">
-            <Generator>ResXFileCodeGenerator</Generator>
+            <Generator>PublicResXFileCodeGenerator</Generator>
             <LastGenOutput>Resources.Designer.cs</LastGenOutput>
         </EmbeddedResource>
     </ItemGroup>

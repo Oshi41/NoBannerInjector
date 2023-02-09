@@ -120,4 +120,55 @@
   <data name="Abyss" xml:space="preserve">
     <value>Abyss</value>
   </data>
+  <data name="on_auth_help" xml:space="preserve">
+    <value>Visit hoyolab.com...</value>
+  </data>
+  <data name="authorizing" xml:space="preserve">
+    <value>Authorizing...</value>
+  </data>
+  <data name="on_user_card_help" xml:space="preserve">
+    <value>Retrieving game info...</value>
+  </data>
+  <data name="on_sign_help" xml:space="preserve">
+    <value>Checking daily sign-up...</value>
+  </data>
+  <data name="done" xml:space="preserve">
+    <value>Done!</value>
+  </data>
+  <data name="achievements" xml:space="preserve">
+    <value>Achievements</value>
+  </data>
+  <data name="auto_loot" xml:space="preserve">
+    <value>Auto pickup</value>
+  </data>
+  <data name="auto_loot_help" xml:space="preserve">
+    <value>Automatically pickup loot nearby. Simulates human to avoid possible ban.</value>
+  </data>
+  <data name="auto_treasure" xml:space="preserve">
+    <value>Auto treasure</value>
+  </data>
+  <data name="auto_treasure_help" xml:space="preserve">
+    <value>Automatically opens chests and other treasures.</value>
+  </data>
+  <data name="auto_loot_header" xml:space="preserve">
+    <value>Auto Loot</value>
+  </data>
+  <data name="increase_max_zoom" xml:space="preserve">
+    <value>Increase Max Zoom</value>
+  </data>
+  <data name="camera_zoom" xml:space="preserve">
+    <value>Camera Zoom</value>
+  </data>
+  <data name="settings" xml:space="preserve">
+    <value>Settings</value>
+  </data>
+  <data name="esp" xml:space="preserve">
+    <value>ESP</value>
+  </data>
+  <data name="enable_esp" xml:space="preserve">
+    <value>Enable ESP</value>
+  </data>
+  <data name="enable_esp_help" xml:space="preserve">
+    <value>Visual guides to game objects.</value>
+  </data>
 </root>

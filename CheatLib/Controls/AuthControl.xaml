@@ -5,18 +5,53 @@
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
              xmlns:wpf="clr-namespace:Microsoft.Web.WebView2.Wpf;assembly=Microsoft.Web.WebView2.Wpf"
              xmlns:controls="clr-namespace:CheatLib.Controls"
-             xmlns:controls1="clr-namespace:CheatLib.Controls"
              xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
+             xmlns:properties="clr-namespace:CheatLib.Properties"
              x:Name="my_control"
              mc:Ignorable="d"
              d:DesignHeight="300" d:DesignWidth="300">
+
     <Grid>
         <materialDesign:Card HorizontalAlignment="Center"
                              VerticalAlignment="Center"
-                             Padding="10"
+                             Padding="16"
                              Visibility="{Binding Path=ShowWeb, ElementName=my_control, Converter={StaticResource InverseBooleanToVisibilityConverter}, Mode=OneWay}">
             <StackPanel>
-                <TextBlock Text="Loading in progress"></TextBlock>
+                <TextBlock Margin="16">
+                    <TextBlock.Style>
+                        <Style TargetType="{x:Type TextBlock}"
+                               BasedOn="{StaticResource MaterialDesignCaptionTextBlock}">
+                            <Style.Triggers>
+                                <DataTrigger Binding="{Binding ElementName=my_control, Path=Step}"
+                                             Value="{x:Static controls:Steps.ToAuth}">
+                                    <Setter Property="Text" Value="{x:Static properties:Resources.on_auth_help}"></Setter>
+                                </DataTrigger>
+
+                                <DataTrigger Binding="{Binding ElementName=my_control, Path=Step}"
+                                             Value="{x:Static controls:Steps.OnAuth}">
+                                    <Setter Property="Text" Value="{x:Static properties:Resources.authorizing}"></Setter>
+                                </DataTrigger>
+
+                                <DataTrigger Binding="{Binding ElementName=my_control, Path=Step}"
+                                             Value="{x:Static controls:Steps.OnUserCard}">
+                                    <Setter Property="Text"
+                                            Value="{x:Static properties:Resources.on_user_card_help}">
+                                    </Setter>
+                                </DataTrigger>
+
+                                <DataTrigger Binding="{Binding ElementName=my_control, Path=Step}"
+                                             Value="{x:Static controls:Steps.OnSign}">
+                                    <Setter Property="Text" Value="{x:Static properties:Resources.on_sign_help}"></Setter>
+                                </DataTrigger>
+
+                                <DataTrigger Binding="{Binding ElementName=my_control, Path=Step}"
+                                             Value="{x:Static controls:Steps.Success}">
+                                    <Setter Property="Text" Value="{x:Static properties:Resources.done}"></Setter>
+                                </DataTrigger>
+                            </Style.Triggers>
+                        </Style>
+                    </TextBlock.Style>
+                </TextBlock>
                 <ProgressBar Style="{DynamicResource MaterialDesignCircularProgressBar}"
                              IsIndeterminate="True" />
             </StackPanel>

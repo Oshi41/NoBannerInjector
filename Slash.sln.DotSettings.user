@@ -12,6 +12,7 @@
   &lt;Assembly Path="C:\Users\oshi_\RiderProjects\Slash\packages\MaterialDesignThemes.4.8.0-ci161\lib\net462\MaterialDesignThemes.Wpf.dll" /&gt;&#xD;
   &lt;Assembly Path="C:\Users\oshi_\RiderProjects\Slash\packages\MaterialDesignThemes.4.7.1\lib\net462\MaterialDesignThemes.Wpf.dll" /&gt;&#xD;
   &lt;Assembly Path="C:\Users\oshi_\RiderProjects\Slash\packages\Microsoft.Xaml.Behaviors.Wpf.1.1.39\lib\net45\Microsoft.Xaml.Behaviors.dll" /&gt;&#xD;
+  &lt;Assembly Path="C:\Program Files (x86)\Snoop\net452\Snoop.Core.dll" /&gt;&#xD;
 &lt;/AssemblyExplorer&gt;</s:String>
 	<s:String x:Key="/Default/Environment/Hierarchy/Build/BuildTool/CustomBuildToolPath/@EntryValue">C:\Users\oshi_\AppData\Local\JetBrains\Toolbox\apps\Rider\ch-0\223.8214.53\tools\MSBuild\Current\Bin\amd64\MSBuild.exe</s:String>
 	
@@ -36,4 +37,5 @@
 	
 	
 	<s:Boolean x:Key="/Default/ResxEditorPersonal/Initialized/@EntryValue">True</s:Boolean>
+	<s:Boolean x:Key="/Default/ResxEditorPersonal/OrderByFullPath/@EntryValue">True</s:Boolean>
 	<s:Boolean x:Key="/Default/ResxEditorPersonal/ShowOnlyErrors/@EntryValue">False</s:Boolean></wpf:ResourceDictionary>

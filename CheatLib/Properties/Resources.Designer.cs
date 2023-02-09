@@ -21,7 +21,7 @@ namespace CheatLib.Properties {
     [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Resources.Tools.StronglyTypedResourceBuilder", "4.0.0.0")]
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
     [global::System.Runtime.CompilerServices.CompilerGeneratedAttribute()]
-    internal class Resources {
+    public class Resources {
         
         private static global::System.Resources.ResourceManager resourceMan;
         
@@ -35,7 +35,7 @@ namespace CheatLib.Properties {
         ///   Returns the cached ResourceManager instance used by this class.
         /// </summary>
         [global::System.ComponentModel.EditorBrowsableAttribute(global::System.ComponentModel.EditorBrowsableState.Advanced)]
-        internal static global::System.Resources.ResourceManager ResourceManager {
+        public static global::System.Resources.ResourceManager ResourceManager {
             get {
                 if (object.ReferenceEquals(resourceMan, null)) {
                     global::System.Resources.ResourceManager temp = new global::System.Resources.ResourceManager("CheatLib.Properties.Resources", typeof(Resources).Assembly);
@@ -50,7 +50,7 @@ namespace CheatLib.Properties {
         ///   resource lookups using this strongly typed resource class.
         /// </summary>
         [global::System.ComponentModel.EditorBrowsableAttribute(global::System.ComponentModel.EditorBrowsableState.Advanced)]
-        internal static global::System.Globalization.CultureInfo Culture {
+        public static global::System.Globalization.CultureInfo Culture {
             get {
                 return resourceCulture;
             }
@@ -62,18 +62,171 @@ namespace CheatLib.Properties {
         /// <summary>
         ///   Looks up a localized string similar to Abyss.
         /// </summary>
-        internal static string Abyss {
+        public static string Abyss {
             get {
                 return ResourceManager.GetString("Abyss", resourceCulture);
             }
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Achievements.
+        /// </summary>
+        public static string achievements {
+            get {
+                return ResourceManager.GetString("achievements", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Authorizing....
+        /// </summary>
+        public static string authorizing {
+            get {
+                return ResourceManager.GetString("authorizing", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Auto pickup.
+        /// </summary>
+        public static string auto_loot {
+            get {
+                return ResourceManager.GetString("auto_loot", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Auto Loot.
+        /// </summary>
+        public static string auto_loot_header {
+            get {
+                return ResourceManager.GetString("auto_loot_header", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Automatically pickup loot nearby. Simulates human to avoid possible ban..
+        /// </summary>
+        public static string auto_loot_help {
+            get {
+                return ResourceManager.GetString("auto_loot_help", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Auto treasure.
+        /// </summary>
+        public static string auto_treasure {
+            get {
+                return ResourceManager.GetString("auto_treasure", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Automatically opens chests and other treasures..
+        /// </summary>
+        public static string auto_treasure_help {
+            get {
+                return ResourceManager.GetString("auto_treasure_help", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Camera Zoom.
+        /// </summary>
+        public static string camera_zoom {
+            get {
+                return ResourceManager.GetString("camera_zoom", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Done!.
+        /// </summary>
+        public static string done {
+            get {
+                return ResourceManager.GetString("done", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Enable ESP.
+        /// </summary>
+        public static string enable_esp {
+            get {
+                return ResourceManager.GetString("enable_esp", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Visual guides to game objects..
+        /// </summary>
+        public static string enable_esp_help {
+            get {
+                return ResourceManager.GetString("enable_esp_help", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Public characters.
         /// </summary>
-        internal static string Enka {
+        public static string Enka {
             get {
                 return ResourceManager.GetString("Enka", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to ESP.
+        /// </summary>
+        public static string esp {
+            get {
+                return ResourceManager.GetString("esp", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Increase Max Zoom.
+        /// </summary>
+        public static string increase_max_zoom {
+            get {
+                return ResourceManager.GetString("increase_max_zoom", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Visit hoyolab.com....
+        /// </summary>
+        public static string on_auth_help {
+            get {
+                return ResourceManager.GetString("on_auth_help", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Checking daily sign-up....
+        /// </summary>
+        public static string on_sign_help {
+            get {
+                return ResourceManager.GetString("on_sign_help", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Retrieving game info....
+        /// </summary>
+        public static string on_user_card_help {
+            get {
+                return ResourceManager.GetString("on_user_card_help", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Settings.
+        /// </summary>
+        public static string settings {
+            get {
+                return ResourceManager.GetString("settings", resourceCulture);
             }
         }
     }

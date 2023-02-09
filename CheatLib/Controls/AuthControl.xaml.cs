@@ -16,7 +16,6 @@ namespace CheatLib.Controls;
 
 public partial class AuthControl : UserControl
 {
-    private Steps _step = Steps.ToAuth;
     private DateTime _lastCall = DateTime.MaxValue;
     private TimeSpan _await = TimeSpan.FromSeconds(3);
 
@@ -24,7 +23,6 @@ public partial class AuthControl : UserControl
     {
         InitializeComponent();
         InitAsync();
-        Loop();
     }
 
     #region DP
@@ -47,6 +45,15 @@ public partial class AuthControl : UserControl
         set { SetValue(ShowWebProperty, value); }
     }
 
+    public static readonly DependencyProperty StepProperty = DependencyProperty.Register(
+        nameof(Step), typeof(Steps), typeof(AuthControl), new PropertyMetadata(default(Steps)));
+
+    public Steps Step
+    {
+        get { return (Steps)GetValue(StepProperty); }
+        set { SetValue(StepProperty, value); }
+    }
+
     #endregion
 
     private async void InitAsync()
@@ -58,6 +65,7 @@ public partial class AuthControl : UserControl
         WebView.CoreWebView2.NavigationCompleted += OnNextStep;
 
         OnNextStep(null, null);
+        Loop();
     }
 
     private async void OnReqReceived(object sender, CoreWebView2WebResourceResponseReceivedEventArgs args)
@@ -86,14 +94,14 @@ public partial class AuthControl : UserControl
             }
 
             // entered credentials
-            if (_step == Steps.OnAuth && Url.Contains("user/full")
-                                      && json.SelectToken("data.user_info.nickname") != null)
+            if (Step == Steps.OnAuth && Url.Contains("user/full")
+                                     && json.SelectToken("data.user_info.nickname") != null)
             {
                 OnNextStep(null, null);
             }
 
             // check is signed
-            if (_step == Steps.OnSign && Url.Contains("info?"))
+            if (Step == Steps.OnSign && Url.Contains("info?"))
             {
                 if (json.SelectToken("data.is_sign")?.Value<bool>() == true)
                 {
@@ -118,11 +126,11 @@ public partial class AuthControl : UserControl
     private async void OnNextStep(object sender, EventArgs e)
     {
         _lastCall = DateTime.Now;
-        switch (_step)
+        switch (Step)
         {
             case Steps.ToAuth:
                 Navigate(Cookies.HoyolabUrl);
-                _step = Steps.OnAuth;
+                Step = Steps.OnAuth;
                 return;
 
             case Steps.OnAuth:
@@ -131,7 +139,7 @@ public partial class AuthControl : UserControl
                     break;
 
                 Navigate("https://www.hoyolab.com/accountCenter/postList?id=" + Cookies.HoyolabUid);
-                _step = Steps.OnUserCard;
+                Step = Steps.OnUserCard;
                 return;
 
             case Steps.OnUserCard:
@@ -139,14 +147,14 @@ public partial class AuthControl : UserControl
                     return;
 
                 Navigate("https://act.hoyolab.com/ys/event/signin-sea-v3/index.html?act_id=e202102251931481");
-                _step = Steps.OnSign;
+                Step = Steps.OnSign;
                 return;
 
             case Steps.OnSign:
                 switch (sender)
                 {
                     case "already_signed":
-                        _step = Steps.Success;
+                        Step = Steps.Success;
                         OnNextStep(null, null);
                         return;
 
@@ -179,15 +187,15 @@ public partial class AuthControl : UserControl
             await Task.Delay(500);
         }
     }
+}
 
-    private enum Steps
-    {
-        ToAuth,
-        OnAuth,
+public enum Steps
+{
+    ToAuth,
+    OnAuth,
 
-        OnUserCard,
-        OnSign,
+    OnUserCard,
+    OnSign,
 
-        Success,
-    }
+    Success,
 }

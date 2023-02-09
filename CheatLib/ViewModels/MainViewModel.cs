@@ -16,8 +16,10 @@ public class MainViewModel : BindableBase
         UpdateTabsCommand = new ActionCommand(o =>
         {
             Tabs.Clear();
+            Tabs.Add(new SettingsVm());
             Tabs.Add(new EnkaVm());
             Tabs.Add(new AbyssVm());
+            Tabs.Add(new AchievementsVm());
         });
     }
 }

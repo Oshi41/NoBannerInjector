@@ -17,4 +17,55 @@
     <data name="Abyss" xml:space="preserve">
         <value>Бездна</value>
     </data>
+    <data name="on_auth_help" xml:space="preserve">
+        <value>Переходим на hoyolab.com...</value>
+    </data>
+    <data name="authorizing" xml:space="preserve">
+        <value>Авторизируемся...</value>
+    </data>
+    <data name="on_user_card_help" xml:space="preserve">
+        <value>Получаем игровую информацию...</value>
+    </data>
+    <data name="on_sign_help" xml:space="preserve">
+        <value>Проверяем дневную награду...</value>
+    </data>
+    <data name="done" xml:space="preserve">
+        <value>Готово!</value>
+    </data>
+    <data name="achievements" xml:space="preserve">
+        <value>Достижения</value>
+    </data>
+    <data name="auto_loot" xml:space="preserve">
+        <value>Автоподбор</value>
+    </data>
+    <data name="auto_loot_help" xml:space="preserve">
+        <value>Автоматически подбирает предметы вокруг. Имитирует человеческое поведение, чтобы избежать бана.</value>
+    </data>
+    <data name="auto_treasure" xml:space="preserve">
+        <value>Быстрое открытие</value>
+    </data>
+    <data name="auto_treasure_help" xml:space="preserve">
+        <value>Автоматически открывает сундуки и иные сокровища.</value>
+    </data>
+    <data name="auto_loot_header" xml:space="preserve">
+        <value>Авто-лут</value>
+    </data>
+    <data name="increase_max_zoom" xml:space="preserve">
+        <value>Увеличить дистанцию камеры</value>
+    </data>
+    <data name="camera_zoom" xml:space="preserve">
+        <value>Настройки камеры</value>
+    </data>
+    <data name="settings" xml:space="preserve">
+        <value>Настройки</value>
+    </data>
+    <data name="esp" xml:space="preserve">
+        <value>ESP</value>
+    </data>
+    <data name="enable_esp" xml:space="preserve">
+        <value>Включить ESP</value>
+    </data>
+    <data name="enable_esp_help" xml:space="preserve">
+        <value>Визуальные подсказки для игровых объектов.</value>
+    </data>
 </root>

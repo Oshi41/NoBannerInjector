@@ -5,7 +5,7 @@
                     xmlns:views="clr-namespace:CheatLib.Controls"
                     xmlns:wpf="clr-namespace:Microsoft.Web.WebView2.Wpf;assembly=Microsoft.Web.WebView2.Wpf"
                     xmlns:b="http://schemas.microsoft.com/xaml/behaviors">
-    
+
     <DataTemplate DataType="{x:Type viewModels:WebPageViewModelBase}">
         <views:WebPageView Address="{Binding Path=Address}"
                            ChangeLangScript="{Binding Path=ChangeLangScript}">
@@ -15,6 +15,10 @@
                 </b:EventTrigger>
             </b:Interaction.Triggers>
         </views:WebPageView>
+    </DataTemplate>
+
+    <DataTemplate DataType="{x:Type viewModels:SettingsVm}">
+        <views:SettingsView />
     </DataTemplate>
 
 

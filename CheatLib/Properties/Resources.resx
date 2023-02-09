@@ -114,64 +114,10 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
-  <data name="enka" xml:space="preserve">
-    <value>Enka</value>
+  <data name="Enka" xml:space="preserve">
+    <value>Public characters</value>
   </data>
-  <data name="debug" xml:space="preserve">
-    <value>Debug</value>
-  </data>
-  <data name="achievements" xml:space="preserve">
-    <value>Achievements</value>
-  </data>
-  <data name="abyss" xml:space="preserve">
+  <data name="Abyss" xml:space="preserve">
     <value>Abyss</value>
-  </data>
-  <data name="file" xml:space="preserve">
-    <value>File</value>
-  </data>
-  <data name="language" xml:space="preserve">
-    <value>Language</value>
-  </data>
-  <data name="refresh_tab" xml:space="preserve">
-    <value>Refresh Tab</value>
-  </data>
-  <data name="settings" xml:space="preserve">
-    <value>Settings</value>
-  </data>
-  <data name="auto_f" xml:space="preserve">
-    <value>Auto pickup</value>
-  </data>
-  <data name="auto_pick_up" xml:space="preserve">
-    <value>Auto loot</value>
-  </data>
-  <data name="simulate_human" xml:space="preserve">
-    <value>Simulate human</value>
-  </data>
-  <data name="auto_treasure" xml:space="preserve">
-    <value>Auto treasure</value>
-  </data>
-  <data name="delay_time__ms_" xml:space="preserve">
-    <value>Delay range (ms)</value>
-  </data>
-  <data name="pickup_tooltip" xml:space="preserve">
-    <value>Auto pickup dropped items for you. Works with random delay to simulate human-like behavior.</value>
-  </data>
-  <data name="auto_treassure_tootip" xml:space="preserve">
-    <value>Automatically opens chests with other treasures.</value>
-  </data>
-  <data name="camera_zoom" xml:space="preserve">
-    <value>Camera zoom</value>
-  </data>
-  <data name="enable" xml:space="preserve">
-    <value>Enable</value>
-  </data>
-  <data name="zoom_scale" xml:space="preserve">
-    <value>Zoom scale: {0}</value>
-  </data>
-  <data name="max_zoom" xml:space="preserve">
-    <value>Max zoom</value>
-  </data>
-  <data name="max_zoom_tooltip" xml:space="preserve">
-    <value>Enable increasing camera zoom.</value>
   </data>
 </root>

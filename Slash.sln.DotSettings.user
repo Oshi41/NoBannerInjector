@@ -1,14 +1,17 @@
 ﻿<wpf:ResourceDictionary xml:space="preserve" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:s="clr-namespace:System;assembly=mscorlib" xmlns:ss="urn:shemas-jetbrains-com:settings-storage-xaml" xmlns:wpf="http://schemas.microsoft.com/winfx/2006/xaml/presentation">
+	<s:Boolean x:Key="/Default/AddReferences/RecentPaths/=C_003A_005CProgram_0020Files_005CMicrosoft_0020Visual_0020Studio_005C2022_005CCommunity_005CCommon7_005CIDE_005CPublicAssemblies_005CMicrosoft_002EWindows_002EDesign_002EExtensibility_002Edll/@EntryIndexedValue">True</s:Boolean>
+	
 	<s:String x:Key="/Default/Environment/AssemblyExplorer/XmlDocument/@EntryValue">&lt;AssemblyExplorer&gt;&#xD;
   &lt;Assembly Path="C:\Users\oshi_\RiderProjects\NoBannerInjector\packages\Newtonsoft.Json.13.0.2\lib\net45\Newtonsoft.Json.dll" /&gt;&#xD;
   &lt;Assembly Path="C:\Users\oshi_\RiderProjects\NoBannerInjector\packages\NtApiDotNet.1.1.33\lib\net461\NtApiDotNet.dll" /&gt;&#xD;
-  &lt;Assembly Path="C:\Users\oshi_\RiderProjects\NoBannerInjector\bin\x64\Debug\CheatLib.dll" /&gt;&#xD;
-  &lt;Assembly Path="C:\Users\oshi_\Desktop\Genshin\Cheat\CLibrary.dll" /&gt;&#xD;
   &lt;Assembly Path="C:\Program Files (x86)\Reference Assemblies\Microsoft\Framework\.NETFramework\v4.8.1\PresentationCore.dll" /&gt;&#xD;
-  &lt;Assembly Path="C:\Users\oshi_\RiderProjects\Slash\packages\GenshinInfo.1.1.1\lib\netstandard2.0\GenshinInfo.dll" /&gt;&#xD;
   &lt;Assembly Path="C:\Users\oshi_\RiderProjects\Slash\packages\HookManager.1.1.0\lib\net48\HookManager.dll" /&gt;&#xD;
   &lt;Assembly Path="C:\Windows\Microsoft.Net\assembly\GAC_MSIL\System\v4.0_4.0.0.0__b77a5c561934e089\System.dll" /&gt;&#xD;
   &lt;Assembly Path="C:\Windows\Microsoft.NET\assembly\GAC_32\System.Web\v4.0_4.0.0.0__b03f5f7f11d50a3a\System.Web.dll" /&gt;&#xD;
+  &lt;Assembly Path="C:\Users\oshi_\RiderProjects\Slash\packages\MaterialDesignColors.2.1.2-ci161\lib\net462\MaterialDesignColors.dll" /&gt;&#xD;
+  &lt;Assembly Path="C:\Users\oshi_\RiderProjects\Slash\packages\MaterialDesignThemes.4.8.0-ci161\lib\net462\MaterialDesignThemes.Wpf.dll" /&gt;&#xD;
+  &lt;Assembly Path="C:\Users\oshi_\RiderProjects\Slash\packages\MaterialDesignThemes.4.7.1\lib\net462\MaterialDesignThemes.Wpf.dll" /&gt;&#xD;
+  &lt;Assembly Path="C:\Users\oshi_\RiderProjects\Slash\packages\Microsoft.Xaml.Behaviors.Wpf.1.1.39\lib\net45\Microsoft.Xaml.Behaviors.dll" /&gt;&#xD;
 &lt;/AssemblyExplorer&gt;</s:String>
 	<s:String x:Key="/Default/Environment/Hierarchy/Build/BuildTool/CustomBuildToolPath/@EntryValue">C:\Users\oshi_\AppData\Local\JetBrains\Toolbox\apps\Rider\ch-0\223.8214.53\tools\MSBuild\Current\Bin\amd64\MSBuild.exe</s:String>
 	

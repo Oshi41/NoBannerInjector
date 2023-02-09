@@ -11,67 +11,10 @@
     <resheader name="writer">
         <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
     </resheader>
-    <data name="enka" xml:space="preserve">
-        <value>Enka</value>
+    <data name="Enka" xml:space="preserve">
+        <value>Публичные персонажи</value>
     </data>
-    <data name="debug" xml:space="preserve">
-        <value>Отладка</value>
-    </data>
-    <data name="achievements" xml:space="preserve">
-        <value>Достижения</value>
-    </data>
-    <data name="abyss" xml:space="preserve">
+    <data name="Abyss" xml:space="preserve">
         <value>Бездна</value>
-    </data>
-    <data name="file" xml:space="preserve">
-        <value>Файл</value>
-    </data>
-    <data name="language" xml:space="preserve">
-        <value>Язык</value>
-    </data>
-    <data name="refresh_tab" xml:space="preserve">
-        <value>Перезагрузить окно</value>
-    </data>
-    <data name="settings" xml:space="preserve">
-        <value>Настройки</value>
-    </data>
-    <data name="auto_f" xml:space="preserve">
-        <value>Авто подбор</value>
-    </data>
-    <data name="auto_pick_up" xml:space="preserve">
-        <value>Авто-лут</value>
-    </data>
-    <data name="simulate_human" xml:space="preserve">
-        <value>Имитировать задержку</value>
-    </data>
-    <data name="auto_treasure" xml:space="preserve">
-        <value>Быстрое открытие</value>
-    </data>
-    <data name="delay_time__ms_" xml:space="preserve">
-        <value>Время между кликами (млс)</value>
-    </data>
-    <data name="pickup_tooltip" xml:space="preserve">
-        <value>Автоматически подбирает вещи. Использует случайную задержку для симуляции человеческого поведения.</value>
-    </data>
-    <data name="auto_treassure_tootip" xml:space="preserve">
-        <value>Автоматически открывает сундуки и другие сокровища</value>
-    </data>
-    <data name="camera_zoom" xml:space="preserve">
-        <value>Дистанция камеры</value>
-    </data>
-    <data name="enable" xml:space="preserve">
-        <value>Включить</value>
-    </data>
-    <data name="zoom_scale" xml:space="preserve">
-        <value>Множитель дистанции: {0}</value>
-    </data>
-    <data name="max_zoom" xml:space="preserve">
-        <value>Максимальная дистанция</value>
-    </data>
-    <data name="max_zoom_tooltip" xml:space="preserve">
-        <value>Включить удаление камеры.</value>
-    </data>
-    <data name="enable_ESP" xml:space="preserve">
-        <value>Включить ESP</value>
     </data>
 </root>

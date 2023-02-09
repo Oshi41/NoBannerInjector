@@ -4,9 +4,9 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Injector", "Injector\Inject
 EndProject
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "Bootstrap", "Bootstrap\Bootstrap.vcxproj", "{E5B3E5C1-9A46-430C-BF6A-96C8B6DF5B94}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CheatLib", "CheatLib\CheatLib.csproj", "{EFB13A14-36FF-439C-AFCA-2DDEE6F54134}"
-EndProject
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "c_plus_example", "c_plus_example\c_plus_example.vcxproj", "{D5C43707-86D9-4CAD-B12A-83B41AAE77ED}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CheatLib", "CheatLib\CheatLib.csproj", "{A370718E-987F-4367-983B-4DE6ADDE0FA4}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -22,13 +22,13 @@ Global
 		{70FB8979-7A92-469F-B2E1-9E45E934420F}.Release|x64.Build.0 = Release|x64
 		{70FB8979-7A92-469F-B2E1-9E45E934420F}.Debug|x64.ActiveCfg = Debug|x64
 		{70FB8979-7A92-469F-B2E1-9E45E934420F}.Debug|x64.Build.0 = Debug|x64
-		{EFB13A14-36FF-439C-AFCA-2DDEE6F54134}.Debug|x64.ActiveCfg = Debug|x64
-		{EFB13A14-36FF-439C-AFCA-2DDEE6F54134}.Release|x64.ActiveCfg = Release|x64
-		{EFB13A14-36FF-439C-AFCA-2DDEE6F54134}.Debug|x64.Build.0 = Debug|x64
-		{EFB13A14-36FF-439C-AFCA-2DDEE6F54134}.Release|x64.Build.0 = Release|x64
 		{D5C43707-86D9-4CAD-B12A-83B41AAE77ED}.Release|x64.ActiveCfg = Release|x64
 		{D5C43707-86D9-4CAD-B12A-83B41AAE77ED}.Release|x64.Build.0 = Release|x64
 		{D5C43707-86D9-4CAD-B12A-83B41AAE77ED}.Debug|x64.ActiveCfg = Debug|x64
 		{D5C43707-86D9-4CAD-B12A-83B41AAE77ED}.Debug|x64.Build.0 = Debug|x64
+		{A370718E-987F-4367-983B-4DE6ADDE0FA4}.Release|x64.ActiveCfg = Release|Any CPU
+		{A370718E-987F-4367-983B-4DE6ADDE0FA4}.Release|x64.Build.0 = Release|Any CPU
+		{A370718E-987F-4367-983B-4DE6ADDE0FA4}.Debug|x64.ActiveCfg = Debug|Any CPU
+		{A370718E-987F-4367-983B-4DE6ADDE0FA4}.Debug|x64.Build.0 = Debug|Any CPU
 	EndGlobalSection
 EndGlobal
